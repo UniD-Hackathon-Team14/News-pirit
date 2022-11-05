@@ -1,48 +1,61 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import { Items } from "../common";
+import { Items, Audio } from "../common";
 
-const ContentsHistory = ({ checkList, setCheckList, datas }) => {
-  
+const ContentsHistory = ({
+  checkList,
+  setCheckList,
+  datas,
+  type,
+  filterData,
+}) => {
   const makeNewsLetter = () => {
     const filterData = datas.filter((el) => checkList.includes(el));
   };
+  console.log(type);
+  console.log(datas);
   return (
     <>
-      {datas.map((item) => (
+      {type == "audio" ? (
         <>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
+          <Audio datas={datas} category={filterData.category.value} />
+        </>
+      ) : (
+        datas.map((item, idx) => (
+          <>
             <div
               style={{
+                width: "100%",
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                justifyContent: "space-between",
               }}
             >
-              <input
-                type="checkBox"
-                checked={checkList.includes(item.id)}
-                onChange={
-                  checkList.includes(item.id)
-                    ? () =>
-                        setCheckList(checkList.filter((el) => el != item.id))
-                    : () => setCheckList(checkList.concat(item.id))
-                }
-                style={{ height: "2rem" }}
-              />
-              <Text>{item.date}</Text>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <input
+                  type="checkBox"
+                  checked={checkList.includes(idx)}
+                  onChange={
+                    checkList.includes(idx)
+                      ? () =>
+                          setCheckList(checkList.filter((el, id) => id != idx))
+                      : () => setCheckList(checkList.concat(idx))
+                  }
+                  style={{ height: "2rem" }}
+                />
+                <Text>{item.date}</Text>
+              </div>
+              <Text>{item.category}</Text>
             </div>
-            <Text>{item.category}</Text>
-          </div>
-          <Items datas={item.image} category={item.category} />
-        </>
-      ))}
+            <Items datas={item.image_list} category={item.category} />
+          </>
+        ))
+      )}
     </>
   );
 };

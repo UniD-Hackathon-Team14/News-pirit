@@ -42,6 +42,7 @@ const ISPC = styled.div`
   }
   min-height: 100vh;
   position: relative;
+  background-color: #eaeaea;
 `;
 
 export default App;

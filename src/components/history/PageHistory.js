@@ -14,45 +14,39 @@ const PageHistory = ({}) => {
   const [filterData, setFilterData] = useState({
     start_date: "",
     end_date: "",
-    category: { value: "직장", label: "직장" },
     record_type: { value: "audio", label: "음성" },
+    category: { value: "직장", label: "직장" },
   });
   const [datas, setDatas] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
-      const filter_data = {
-        category: { value: "직장", label: "직장" },
-        record_type: { value: "audio", label: "음성" },
-      };
-      handleFetch(filter_data);
+      handleFetch(filterData);
     }, [500]);
   }, []);
 
   const handleFetch = async (filter_data) => {
-    console.log(filter_data);
     const query = {
       category: filter_data.category.value,
       type: filter_data.record_type.value,
     };
-    console.log(query);
 
     const res = await getApi.getHistory({
-      category: filter_data.category,
       type: filter_data.record_type.value,
+      category: filter_data.category.value,
     });
-    console.log(res);
+    setDatas(filter_data.record_type.value == "audio" ? res.audio_list : res);
   };
 
   const options = [
-    { label: "직장", value: "직장" },
-    { label: "학업", value: "학업" },
+    { label: "음성", value: "audio" },
+    { label: "이미지", value: "image" },
   ];
 
   const record_options = [
-    { label: "음성", value: "audio" },
-    { label: "이미지", value: "image" },
+    { label: "직장", value: "직장" },
+    { label: "학업", value: "학업" },
   ];
 
   console.log(filterData);
@@ -60,6 +54,7 @@ const PageHistory = ({}) => {
     const convert_data = await datas.filter((el) => checkList.includes(el.id));
     return convert_data;
   };
+
   const printDocument = async () => {
     //1.html을 들고와서 canvas화
     var elem = document.getElementById("divToPrint");
@@ -106,6 +101,10 @@ const PageHistory = ({}) => {
   };
 
   console.log(printData);
+
+  console.log(datas.filter((el, idx) => console.log(idx)));
+
+  console.log(checkList);
   return (
     <>
       <Title stlye={{}}>00님의 취재파일</Title>
@@ -118,18 +117,30 @@ const PageHistory = ({}) => {
           record_options={record_options}
           handleFetch={handleFetch}
         />
-        <button onClick={() => setIsModalOpen(true)}>뉴스 레터만들기</button>
+        <div style={{ width: "100%", justifyContent: "flex-end" }}>
+          <button
+            style={{
+              backgroundColor: "#ffffff",
+              border: "0.1rem solid #191919",
+            }}
+            onClick={() => setIsModalOpen(true)}
+          >
+            뉴스 레터만들기
+          </button>
+        </div>
 
         <ContentsHistory
           checkList={checkList}
           setCheckList={setCheckList}
           datas={datas}
+          filterData={filterData}
+          type={filterData?.record_type?.value}
         />
         {isModalOpen && (
           <Modal
             onClick={printDocument}
             setIsOpen={setIsModalOpen}
-            printData={datas.filter((el) => checkList.includes(el.id))}
+            printData={datas.filter((el, idx) => checkList.includes(idx))}
           />
         )}
       </Container>

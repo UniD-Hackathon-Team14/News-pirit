@@ -12,6 +12,7 @@ const ContentsFilter = ({
 }) => {
   const router = useRouter();
   console.log(filterData);
+  console.log(record_options);
   return (
     <>
       <FilterContainer>
@@ -20,24 +21,26 @@ const ContentsFilter = ({
           options={options}
           isSearchable={false}
           inputData={filterData.record_type}
-          setInputData={(e) => {
-            setFilterData({ ...filterData, record_type: e });
-            handleFetch(filterData);
+          setInputData={async (e) => {
+            const filter_data = { ...filterData, record_type: e };
+            await handleFetch(filter_data);
+            setFilterData(filter_data);
           }}
         />
         <CategoryList>
-          {options.map((item, idx) => (
+          {record_options.map((item, idx) => (
             <ProductTypeSelect>
               <ProductTypeOption
                 style={{
                   width: item.label.length * 11.5 + 40,
                   height: "3.8rem",
                 }}
-                isClicked={filterData.category === item.value}
-                onClick={() => {
-                  if (filterData.category !== item.value) {
-                    setFilterData({ ...filterData, category: item });
-                    handleFetch(filterData);
+                isClicked={filterData.category.value === item.value}
+                onClick={async () => {
+                  if (filterData.category.value !== item.value) {
+                    const filter_data = { ...filterData, category: item };
+                    await handleFetch(filter_data);
+                    setFilterData(filter_data);
                   }
                 }}
               >

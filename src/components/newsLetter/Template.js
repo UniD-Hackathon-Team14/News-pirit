@@ -42,6 +42,7 @@ export const Template = ({ printData }) => {
     doc.save("filename" + new Date().getTime() + ".pdf");
   };
 
+  console.log(printData);
   return (
     <div style={{ overflow: "none" }}>
       <Container id="divToPrint">
@@ -57,10 +58,17 @@ export const Template = ({ printData }) => {
           printData.map((item) => (
             <div className={styles.content}>
               <div className={styles.imageContent}>
-                <h2>{item.date} 직장에서 이슈 발생</h2>
-                {item.image.map((img) => (
-                  <div className={styles.imgContentBody}>{img.image_main}</div>
-                ))}
+                <h2>
+                  {item.date} / {item.category}
+                </h2>
+                <div style={{ display: "flex" }}>
+                  {item.image_list.map((img) => (
+                    <div>
+                      <div> {img.question}</div>
+                      <Image src={img.image} />
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className={styles.voiceContent}>
                 <h2>00월 00일 학교에서 이슈 발생</h2>
@@ -96,4 +104,18 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+`;
+
+const Image = styled.div`
+  background: url(${(props) => props.src}) center center / cover;
+  background-color: ${({ theme }) => theme.colors.gray_7};
+
+  @media screen and (min-width: 480px) {
+    width: ${`calc(120px - 0.28rem);`};
+    height: ${`calc(120px - 0.28rem);`};
+  }
+  @media screen and (max-width: 480px) {
+    width: ${`calc(25vw - 0.28rem);`};
+    height: ${`calc(25vw - 0.28rem);`};
+  }
 `;
