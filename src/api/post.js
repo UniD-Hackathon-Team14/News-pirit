@@ -19,14 +19,12 @@ const signup = async (body) => {
   try {
     const { data } = await axios({
       baseURL: API_DOMAIN,
-      url: `/accounts/register/`,
+      url: `/register/`,
       method: "post",
       data: body,
     });
-    // console.log('[SUCCESS] SIGNUP', data);
     return data;
   } catch (e) {
-    // console.log('[FAIL] SIGNUP', e);
     return e;
   }
 };
