@@ -8,12 +8,12 @@ const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 export default function Records() {
   const router = useRouter();
+  const [pageNum, setPageNum] = useState(0);
 
-  const [blobURL, setBlobURL] = useState("");
+  const [Blob, setBlob] = useState("");
   const [isRecording, setIsRecording] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
   const [question, setQuestion] = useState([]);
-  const [pageNum, setPageNum] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(async () => {
@@ -46,14 +46,10 @@ export default function Records() {
         .getMp3()
         .then(async ([buffer, blob]) => {
           console.log(blob);
-          const res = await postApi.postAudio({
-            question: question?.[pageNum]?.question,
-            audio_dirs: blob,
-          });
-          console.log(res);
+          setPageNum(1);
+          setBlob(blob);
 
           const blobURL = URL.createObjectURL(blob);
-          setBlobURL(blobURL);
           setIsRecording(false);
         })
         .catch((e) => {
@@ -61,6 +57,16 @@ export default function Records() {
         });
     } else {
       alert("음성 파일을 녹음해주세요");
+    }
+  };
+  const postAnswer = async () => {
+    const res = await postApi.postAudio({
+      question: question?.question,
+      audio_dirs: Blob,
+    });
+    console.log(res);
+    if (res) {
+      router.push("/write/complete");
     }
   };
 
@@ -79,15 +85,13 @@ export default function Records() {
   }, []);
 
   if (isLoading) return <div>Loading...</div>;
-  else
+  else if (pageNum == 0) {
     return (
       <div className={styles.container}>
         <div className="title"></div>
         <div className={styles.title}>감정의 셀프 기자회견</div>
         <div className={styles.divider} />
-        <div className={styles.sub_title}>
-          Q{pageNum}. {question?.[pageNum]?.contents}
-        </div>
+        <div className={styles.sub_title}>Q1. {question?.contents}</div>
         <div className={styles.img_container} onClick={start}>
           <img src={"/img/ic_mike.png"} className={styles.img} />
         </div>{" "}
@@ -103,6 +107,46 @@ export default function Records() {
             <span className={styles.button_text}>녹음완료</span>
           </div>
         </div>
+        <img className={styles.mike_1} src={"/img/ic-color-mike1.png"} />
+        <img className={styles.mike_2} src={"/img/ic-color-mike2.png"} />
       </div>
     );
+  } else if (pageNum == 1) {
+    return (
+      <div className={styles.container}>
+        <div className="title"></div>
+        <div className={styles.title}>감정의{"\n"}셀프 기자회견</div>
+        <div className={styles.divider} />
+        <div className={styles.sub_title}>Q1. {question?.contents}</div>
+        <div className={styles.img_container} onClick={start}>
+          <img src={"/img/ic_mike.png"} className={styles.img} />
+        </div>{" "}
+        <div className={styles.text_container}>
+          <div className={styles.text}>인터뷰가 끝났어요</div>
+        </div>
+        <div className={styles.text_container}>
+          <div className={styles.color_text}>
+            {Blob.size}
+            {Blob.type}
+          </div>
+        </div>
+        <div className={styles.button_container}>
+          <div
+            className={styles.small_button_gray}
+            onClick={() => {
+              setBlob("");
+              setPageNum(0);
+            }}
+          >
+            <span className={styles.button_text}>재녹음</span>
+          </div>
+          <div className={styles.small_button} onClick={postAnswer}>
+            <span className={styles.button_text}>완료</span>
+          </div>
+        </div>
+        <img className={styles.mike_1} src={"/img/ic-color-mike1.png"} />
+        <img className={styles.mike_2} src={"/img/ic-color-mike2.png"} />
+      </div>
+    );
+  }
 }

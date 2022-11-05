@@ -41,6 +41,7 @@ const postAudio = async (body) => {
       url: `/answer/audio/`,
       method: "post",
       data: formData,
+      withCredentials: true,
     });
     console.log(res);
     // console.log('[SUCCESS] POST AUDIO', data);

@@ -19,7 +19,7 @@ const getAudioQuestion = async () => {
   try {
     const { data } = await axios({
       baseURL: API_DOMAIN,
-      url: `/question/?category=1&type=audio`,
+      url: `/question/?category=직장&type=audio`,
       method: "get",
     });
     // console.log('[SUCCESS] GET AUDIO QUESTION', data);
