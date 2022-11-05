@@ -35,6 +35,7 @@ const postAudio = async (body) => {
   const formData = new FormData();
   formData.append("qna_question", body.question);
   formData.append("audio_dirs", body.audio_dirs);
+  formData.append("user", body.userId);
   try {
     const { data } = await axios({
       baseURL: API_DOMAIN,
