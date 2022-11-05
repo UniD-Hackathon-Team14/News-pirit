@@ -6,6 +6,10 @@ import "../styles/globals.css";
 // theme
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
+import axios from 'axios';
+
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 
 function App({ Component, pageProps }) {
   return (
