@@ -92,7 +92,7 @@ const getImages = async (category) => {
   }
 }
 
-const getHistory = async (filterData) => {
+const getHistory = async (filterData, userId) => {
   try {
     console.log(API_DOMAIN);
     const { data } = await axios({
@@ -101,7 +101,7 @@ const getHistory = async (filterData) => {
         category: filterData.category,
         type: `${filterData.type}`,
       },
-      url: `/history`,
+      url: `/history?user=${userId}`,
       method: "get",
       withCredentials: true,
     });

@@ -61,21 +61,13 @@ export const Template = ({ printData }) => {
                 <h2>
                   {item.date} / {item.category}
                 </h2>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex", overflow: "scroll" }}>
                   {item.image_list.map((img) => (
                     <div>
                       <div> {img.question}</div>
                       <Image src={img.image} />
                     </div>
                   ))}
-                </div>
-              </div>
-              <div className={styles.voiceContent}>
-                <h2>00월 00일 학교에서 이슈 발생</h2>
-                <div className={styles.voiceContentBody}>
-                  <p>설명 글</p>
-                  <button>시험시작</button>
-                  <button>일시정지</button>
                 </div>
               </div>
             </div>

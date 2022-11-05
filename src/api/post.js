@@ -37,36 +37,37 @@ const imageAnswer = async (body) => {
       method: "post",
       data: body,
     });
-     return data;
+    return data;
   } catch (e) {
     return e;
   }
-}
+};
 
 const postAudio = async (body) => {
-    const formData = new FormData();
-    formData.append("qna_question", body.question);
-    formData.append("audio_dirs", body.audio_dirs);
-    try {
-      const { data } = await axios({
-        baseURL: API_DOMAIN,
-        url: `/answer/audio/`,
-        method: "post",
-        data: formData,
-        withCredentials: true,
-      });
-      console.log(res);
-      // console.log('[SUCCESS] POST AUDIO', data);
-      return data;
-    } catch (e) {
-      // console.log('[FAIL] POST AUDIO', e);
-      return e;
-    }
-}
+  const formData = new FormData();
+  formData.append("qna_question", body.question);
+  formData.append("audio_dirs", body.audio_dirs);
+  try {
+    const { data } = await axios({
+      baseURL: API_DOMAIN,
+      url: `/answer/audio/`,
+      method: "post",
+      data: formData,
+      withCredentials: true,
+    });
+    console.log(res);
+    // console.log('[SUCCESS] POST AUDIO', data);
+    return data;
+  } catch (e) {
+    // console.log('[FAIL] POST AUDIO', e);
+    return e;
+  }
+};
 
 const postApi = {
   signup,
   login,
+  imageAnswer,
   postAudio,
 };
 export default postApi;

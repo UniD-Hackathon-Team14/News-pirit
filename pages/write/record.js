@@ -60,9 +60,12 @@ export default function Records() {
     }
   };
   const postAnswer = async () => {
+    const userId = localStorage.getItem("userID");
+
     const res = await postApi.postAudio({
       question: question?.question,
       audio_dirs: Blob,
+      userId: userId,
     });
     console.log(res);
     if (res) {
