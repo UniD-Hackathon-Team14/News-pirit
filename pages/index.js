@@ -32,7 +32,9 @@ export default function Home() {
                     꾸밈없이 내 자신에게 솔직해지세요
                 </div>
             </div>
-            <div className={styles[`home-image`]}>설명하는 그림</div>
+            <div className={styles[`home-image`]}>
+                <img src="../img/zamReporter.png"/>
+            </div>
         </div>
           {
               isLoggedIn?<Navigator/>:

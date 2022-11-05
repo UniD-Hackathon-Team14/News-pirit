@@ -19,6 +19,7 @@ background-color: #ddd;
 .home-title {
     height: 100px;
     font-size: 28px;
+    font-weight: bold;
 }
 
 .home-subtitle {
@@ -28,7 +29,11 @@ background-color: #ddd;
 .home-image {
     width: 350px;
     height: 420px;
-    border: solid black 5px;
+}
+
+.home-image img {
+    padding-top: 80px;
+    width: 100%;
 }
 
 .authentication {
