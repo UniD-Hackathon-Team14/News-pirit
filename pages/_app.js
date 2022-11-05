@@ -35,11 +35,8 @@ const ISPC = styled.div`
   @media screen and (max-width: 480px) {
     width: 100%;
   }
-<<<<<<< HEAD
   min-height: 100vh;
-=======
-  min-hieght: 100vh;
->>>>>>> 03757feb6b2f7f1d47376202cf4dd91367190dd7
+  position: relative;
 `;
 
 export default App;

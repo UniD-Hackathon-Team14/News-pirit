@@ -20,8 +20,11 @@ export default function Write() {
       <div className={styles.container}>
         <div
           className={styles.optionbox}
-          onClick={() => {router.push('/write/images')}}
-        >
+          onClick={() => {router.push({
+            pathname: '/write/images',
+            query: { category: router.query.category },
+          });
+        }}>
           <img className={styles.img1} src='/img/photographer 1.svg'></img>
           사진 기록
         </div>

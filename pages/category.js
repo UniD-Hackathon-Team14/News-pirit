@@ -22,28 +22,28 @@ export default function Category() {
         <div
           className={styles.categorybox}
           onClick={() => {handleClick('직장')}}
-          style={{'background-image': "url('/img/Rectangle 690.svg')"}}
+          style={{'backgroundImage': "url('/img/Rectangle 690.svg')"}}
         >
           <h1>직장</h1>
         </div>
         <div
           className={styles.categorybox}
           onClick={() => {handleClick('친구')}}
-          style={{'background-image': "url('/img/Rectangle 692.svg')"}}
+          style={{'backgroundImage': "url('/img/Rectangle 692.svg')"}}
         >
           <h1>학업</h1>
         </div>
         <div
           className={styles.categorybox}
           onClick={() => {handleClick('진로')}}
-          style={{'background-image': "url('/img/Rectangle 694.svg')"}}
+          style={{'backgroundImage': "url('/img/Rectangle 694.svg')"}}
         >
           <h1>친구</h1>
         </div>
         <div
           className={styles.categorybox}
           onClick={() => {handleClick('학업')}}
-          style={{'background-image': "url('/img/Rectangle 695.svg')"}}
+          style={{'backgroundImage': "url('/img/Rectangle 695.svg')"}}
         >
           <h1>가족</h1>
         </div>
