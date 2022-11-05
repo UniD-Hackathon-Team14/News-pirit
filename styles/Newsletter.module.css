@@ -1,37 +1,78 @@
+.divToPrint {
+    top: 0;
+    background-image: url('/img/newsBackground.png');
+    background-size: 450px;
+    width: 450px;
+    height: 1000px;
+}
 .container {
-    margin: 7px;
+    margin: 20px;
+    margin-top: 0;
 }
 
 .headerTitle {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 6px solid rgb(93, 93, 93);
+    border-bottom: 7px solid rgba(0, 0, 0, 0.4);
     margin-bottom: 25px;
     font-size: 13px;
+    color: #6A6A6A;
 }
 .headerTitle h1 {
     font-size: 30px;
+    color: #000;
 }
-
+.headerTitle div button {
+    border: 0;
+    border-radius: 12px;
+    font-size: 18px;
+    padding: 3px 15px;
+}
+.headerTitle div button:hover {
+    background-color: #000;
+    color: #fff;
+}
 .headerInfo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 1px solid rgb(93, 93, 93);
+    text-align: end;
+    border-bottom: 1.5px solid rgb(0, 0, 0);
     font-size: 15px;
 }
 .headerInfo p {
     margin: 3px 0px;
-    color: black;
 }
 
 .content div h2 {
-    font-size: 25px;
+    font-size: 26px;
+    margin-bottom: 3px;
 }
 
 .content div {
-    background-color: rgb(240, 240, 240);
+    text-align: center;
     padding: 10px;
-    margin: 20px;
+}
+
+.content div p {
+    font-size: 15px;
+}
+
+.imageContent, .voiceContent {
+    border-bottom: 1.5px solid rgb(0, 0, 0);
+}
+.imgContentBody img {
+    width: 85px;
+    height: 85px;
+    margin: 5px;
+}
+
+.voiceContentBody button {
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: 0;
+    background-color: #6A6A6A;
+    color: #fff;
+}
+
+.voiceContentBody button:hover {
+    background-color: #000;
 }

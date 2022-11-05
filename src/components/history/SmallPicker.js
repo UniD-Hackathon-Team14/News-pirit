@@ -17,7 +17,7 @@ const SmallPicker = ({
   const customStyles = {
     control: (styles) => ({
       ...styles,
-      width: "6rem",
+      width: "8rem",
       height: "4.15rem",
       border: "none",
       borderRadius: "0.3rem",

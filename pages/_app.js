@@ -7,11 +7,19 @@ import "../styles/globals.css";
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 import axios from 'axios';
+import getApi from '../src/api/get'
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.withCredentials = true
+
+getApi.getProfile()
 
 function App({ Component, pageProps }) {
+  useEffect(async () => {
+    const res = await getApi.getProfile();
+  }, []);
+
   return (
     <ISPC>
       <ThemeProvider theme={theme}>
@@ -35,7 +43,9 @@ const ISPC = styled.div`
   @media screen and (max-width: 480px) {
     width: 100%;
   }
-  min-hieght: 100vh;
+  min-height: 100vh;
+  position: relative;
+  background-color: #eaeaea;
 `;
 
 export default App;
