@@ -21,9 +21,7 @@ const PageHistory = ({}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      handleFetch(filterData);
-    }, [500]);
+    handleFetch(filterData);
   }, []);
 
   const handleFetch = async (filter_data) => {
@@ -31,11 +29,15 @@ const PageHistory = ({}) => {
       category: filter_data.category.value,
       type: filter_data.record_type.value,
     };
-
-    const res = await getApi.getHistory({
-      type: filter_data.record_type.value,
-      category: filter_data.category.value,
-    });
+    const userId = localStorage.getItem("userID");
+    console.log(userId);
+    const res = await getApi.getHistory(
+      {
+        type: filter_data.record_type.value,
+        category: filter_data.category.value,
+      },
+      userId
+    );
     setDatas(filter_data.record_type.value == "audio" ? res.audio_list : res);
   };
 
@@ -100,11 +102,6 @@ const PageHistory = ({}) => {
     }
   };
 
-  console.log(printData);
-
-  console.log(datas.filter((el, idx) => console.log(idx)));
-
-  console.log(checkList);
   return (
     <>
       <Title stlye={{}}>00님의 취재파일</Title>
