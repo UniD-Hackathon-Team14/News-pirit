@@ -43,32 +43,37 @@ export default function Newsletter() {
   };
 
   return (
-    <div id="divToPrint">
-      <div className={styles.container}>
-        <div className={styles.headerTitle}>
-          <p>2021.11.5~2021.11.7</p>
-          <h1>유니드신문</h1>
-        </div>
-        <div className={styles.headerInfo}>
-          <p>A1</p>
-          <p>2021년 11월 15일 생성</p>
-        </div>
-        <div className={styles.content}>
-          <div className={styles.imageContent}>
-            <h2>00월 00일 직장에서 이슈 발생</h2>
-            <div className={styles.imgContentBody}>이미지</div>
+    <div id="divToPrint" className={styles.divToPrint}>
+        <div className={styles.container}>
+          <div className={styles.headerTitle}>
+            <div>
+              <p>2021.11.5~2021.11.7</p>
+              <button onClick={printDocument}>Print</button>
+            </div>
+            <h1>유니드신문</h1>
           </div>
-          <div className={styles.voiceContent}>
-            <h2>00월 00일 학교에서 이슈 발생</h2>
-            <div className={styles.voiceContentBody}>
-              <p>설명 글</p>
-              <button>시험시작</button>
-              <button>일시정지</button>
+          <div className={styles.headerInfo}>
+            <p>2021년 11월 15일 생성</p>
+          </div>
+          <div className={styles.content}>
+            <div className={styles.imageContent}>
+              <h2>00월 00일 직장에서 이슈 발생</h2>
+              <p>이날 OO님의 하루는 사진으로 기록되었습니다.</p>
+              <div className={styles.imgContentBody}>
+                <img src="https://image.msscdn.net/images/goods_img/20200814/1550594/1550594_5_500.jpg?t=20220816110932"></img>
+                <img src="https://image.msscdn.net/images/goods_img/20200814/1550594/1550594_5_500.jpg?t=20220816110932"></img>
+                <img src="https://image.msscdn.net/images/goods_img/20200814/1550594/1550594_5_500.jpg?t=20220816110932"></img>
+              </div>
+            </div>
+            <div className={styles.voiceContent}>
+              <h2>00월 00일 학교에서 이슈 발생</h2>
+              <p>이날 OO님의 하루는 음성으로 기록되었습니다.</p>
+              <div className={styles.voiceContentBody}>
+                <button>돌아보기</button>
+              </div>
             </div>
           </div>
         </div>
-        <button onClick={printDocument}>Print</button>
-      </div>
     </div>
   );
 }
