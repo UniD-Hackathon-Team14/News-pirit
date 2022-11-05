@@ -21,19 +21,19 @@ const Audio = ({
       <ItemList>
         {datas?.length > 0 &&
           datas.map((item) => (
-            <div>
-              <Text>{item.created_at}</Text>
-              <Text>
+            <Background>
+              <Text>{item.created_at.slice(0,10)}</Text>
+              <TextCenter>
                 {" "}
                 {item.question}({category})
-              </Text>
+              </TextCenter>
               <GoodsCntnr
                 onMouseEnter={() => setShowID(() => [item.id])}
                 onMouseLeave={() => setShowID(() => [])}
               >
                 <AudioItem controls src={item.audio} />
               </GoodsCntnr>
-            </div>
+            </Background>
           ))}
       </ItemList>
     </>
@@ -73,6 +73,11 @@ const AudioItem = styled.audio`
   @media screen and (max-width: 480px) {
     width: ${`calc(50vw - 0.28rem);`};
   }
+`;
+
+const Background = styled.div`
+  background: url(/img/audio.png) center center / contain no-repeat;
+  width: 139px;
 `;
 
 const ItemHover = styled.div`
@@ -125,3 +130,15 @@ const Text = styled.div`
   text-overflow: ellipsis;
   overflow: hidden;
 `;
+
+const TextCenter = styled.div`
+
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  align-items: center;
+  text-align: center;
+`;
+
