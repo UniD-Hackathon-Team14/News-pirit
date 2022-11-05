@@ -8,13 +8,26 @@ export default function Signup() {
     const [password, setPassword] = useState("");
     const [passwordCheck, setPasswordCheck] = useState("");
     const [isDifferentPassword, setIsDifferentPassword] = useState(false);
+    const [isDuplicateUsername, setIsDuplicateUsername] = useState(0);
     const checkDuplicateUsername = () => {
         event.preventDefault();
-        getApi.checkDuplicateUsername(username);
+        getApi.checkDuplicateUsername(username).then((res) => {
+            console.log(res);
+            if(res == "Username valid")
+                setIsDuplicateUsername(1);
+            else 
+                setIsDuplicateUsername(2);
+        })
     }
     const handleSignup= (event) => {
         event.preventDefault();
-        postApi.signup({username, password, nickname});
+        if(password !== passwordCheck) {
+            setIsDifferentPassword(true);
+        }
+        else {
+            setIsDifferentPassword(false);
+            postApi.signup({username, password, nickname});
+        }
     }
     const handleChangeUsername = (event) => {
         setUsername(event.target.value);
@@ -27,6 +40,17 @@ export default function Signup() {
     }
     const handleChangePasswordCheck= (event) => {
         setPasswordCheck(event.target.value);
+    }
+    const DuplicateUsername = () => {
+        switch(isDuplicateUsername) {
+            case 0:
+                return <div>아이디 중복 확인해주세요</div>
+            case 1:
+                return <div>사용가능한 아이디입니다</div>
+            case 2:
+                return <div>이미 존재하는 아이디입니다.</div>
+        }
+
     }
     const DifferentPasswordWarning = () => (
         <div>
@@ -54,8 +78,8 @@ export default function Signup() {
                             />
                             <div>
                                 <button type="submit" onClick = {checkDuplicateUsername}>아이디 중복확인</button>
-                                아이디 중복 확인 체크해주세요
                             </div>
+                            <DuplicateUsername/>
                         </div>
                         <div>
                             비밀번호
