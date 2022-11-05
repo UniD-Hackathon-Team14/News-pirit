@@ -1,9 +1,17 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import {useEffect, useState} from 'react'
 import { useRouter } from 'next/router';
+import Navigator from '../src/components/common/navigator';
 
 export default function Home() {
-    const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+    useEffect(() => {
+        const loginState = localStorage.getItem('isLogin');
+        setIsLoggedIn(loginState);
+    }, [isLoggedIn]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -25,11 +33,14 @@ export default function Home() {
                 </div>
             </div>
             <div className={styles[`home-image`]}>설명하는 그림</div>
+        </div>
+          {
+              isLoggedIn?<Navigator/>:
             <div className={styles.authentication}>
                 <button className={styles.login} onClick = {() => {router.push('/login')}}>로그인</button>
                 <button className={styles.signup} onClick = {() => {router.push('/signup')}}>회원가입</button>
             </div>
-        </div>
+          }
       </main>
     </div>
   )
