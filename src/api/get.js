@@ -15,6 +15,22 @@ const getUserID = async (name) => {
   }
 };
 
+const getProfile = async () => {
+  try {
+    const { data } = await axios({
+      baseURL: API_DOMAIN,
+      url: `/profile/`,
+      method: "get",
+      withCredentials: true,
+    });
+    // console.log('[SUCCESS] GET PROFILE', data);
+    return data;
+  } catch (e) {
+    // console.log('[FAIL] GET PROFILE', e);
+    return e;
+  }
+};
+
 const getAudioQuestion = async () => {
   try {
     const { data } = await axios({
@@ -47,9 +63,30 @@ const getImages = async (category) => {
   }
 };
 
+const getHistory = async (filterData) => {
+  try {
+    console.log(API_DOMAIN);
+    const { data } = await axios({
+      baseURL: API_DOMAIN,
+      params: {
+        category: filterData.category,
+        type: `${filterData.type}`,
+      },
+      url: `/history`,
+      method: "get",
+      withCredentials: true,
+    });
+    return data;
+  } catch (e) {
+    return e;
+  }
+};
+
 const getApi = {
   getUserID,
+  getProfile,
   getAudioQuestion,
   getImages,
+  getHistory,
 };
 export default getApi;

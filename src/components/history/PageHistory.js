@@ -6,103 +6,56 @@ import { Template } from "../newsLetter/Template";
 
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { style } from "@mui/system";
+import getApi from "../../api/get";
 
 const PageHistory = ({}) => {
   const [checkList, setCheckList] = useState([]);
   const [filterData, setFilterData] = useState({
     start_date: "",
     end_date: "",
-    category: { value: 1, label: "직장" },
-    record_type: { value: 1, label: "음성" },
+    category: { value: "직장", label: "직장" },
+    record_type: { value: "audio", label: "음성" },
   });
+  const [datas, setDatas] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const datas = [
-    {
-      id: 1,
-      date: "2019-02-01",
-      category: "직장",
-      image: [
-        {
-          id: 1,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-        {
-          id: 2,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-      ],
-    },
-    {
-      id: 2,
-      date: "2019-02-01",
-      category: "학업",
+  useEffect(() => {
+    setTimeout(() => {
+      const filter_data = {
+        category: { value: "직장", label: "직장" },
+        record_type: { value: "audio", label: "음성" },
+      };
+      handleFetch(filter_data);
+    }, [500]);
+  }, []);
 
-      image: [
-        {
-          id: 3,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-        {
-          id: 4,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-      ],
-    },
-    {
-      id: 3,
-      date: "2019-02-01",
-      category: "학교",
+  const handleFetch = async (filter_data) => {
+    console.log(filter_data);
+    const query = {
+      category: filter_data.category.value,
+      type: filter_data.record_type.value,
+    };
+    console.log(query);
 
-      image: [
-        {
-          id: 5,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-        {
-          id: 6,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-      ],
-    },
-    {
-      id: 4,
-      date: "2019-02-01",
-      category: "직장",
-      image: [
-        {
-          id: 7,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-        {
-          id: 8,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-      ],
-    },
-  ];
-
-  const handleFetch = () => {
-    return 1;
+    const res = await getApi.getHistory({
+      category: filter_data.category,
+      type: filter_data.record_type.value,
+    });
+    console.log(res);
   };
 
   const options = [
-    { label: "전체", value: -1 },
-    { label: "직장", value: 1 },
-  ];
-  const record_options = [
-    { label: "음성", value: 1 },
-    { label: "이미지", value: 2 },
+    { label: "직장", value: "직장" },
+    { label: "학업", value: "학업" },
   ];
 
+  const record_options = [
+    { label: "음성", value: "audio" },
+    { label: "이미지", value: "image" },
+  ];
+
+  console.log(filterData);
   const printData = async () => {
     const convert_data = await datas.filter((el) => checkList.includes(el.id));
     return convert_data;
@@ -155,7 +108,7 @@ const PageHistory = ({}) => {
   console.log(printData);
   return (
     <>
-      <button onClick={() => setIsModalOpen(true)}>뉴스 레터만들기</button>
+      <Title stlye={{}}>00님의 취재파일</Title>
 
       <Container style={{ padding: 0, marginTop: 0 }}>
         <ContentsFilter
@@ -165,6 +118,8 @@ const PageHistory = ({}) => {
           record_options={record_options}
           handleFetch={handleFetch}
         />
+        <button onClick={() => setIsModalOpen(true)}>뉴스 레터만들기</button>
+
         <ContentsHistory
           checkList={checkList}
           setCheckList={setCheckList}
@@ -184,6 +139,29 @@ const PageHistory = ({}) => {
 
 export default PageHistory;
 
+const Title = styled.div`
+  z-index: 3;
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    left: 0;
+  }
+  position: fixed;
+  height: 8.5rem;
+  top: 0;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+  background-color: #eaeaea;
+`;
 const ContentCntnr = styled.div`
   position: fixed;
   z-index: 4;
