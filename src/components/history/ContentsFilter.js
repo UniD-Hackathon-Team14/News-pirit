@@ -11,7 +11,7 @@ const ContentsFilter = ({
   handleFetch,
 }) => {
   const router = useRouter();
-
+  console.log(filterData);
   return (
     <>
       <FilterContainer>
@@ -19,23 +19,24 @@ const ContentsFilter = ({
           isMulti={false}
           options={options}
           isSearchable={false}
-          inputData={filterData.category}
+          inputData={filterData.record_type}
           setInputData={(e) => {
-            setFilterData({ ...filterData, category: e });
+            setFilterData({ ...filterData, record_type: e });
+            handleFetch(filterData);
           }}
         />
         <CategoryList>
-          {record_options.map((item, idx) => (
+          {options.map((item, idx) => (
             <ProductTypeSelect>
               <ProductTypeOption
                 style={{
                   width: item.label.length * 11.5 + 40,
                   height: "3.8rem",
                 }}
-                isClicked={filterData.record_type === item.value}
+                isClicked={filterData.category === item.value}
                 onClick={() => {
-                  if (filterData.record_type !== item.value) {
-                    setFilterData({ ...filterData, record_type: item.value });
+                  if (filterData.category !== item.value) {
+                    setFilterData({ ...filterData, category: item });
                     handleFetch(filterData);
                   }
                 }}
@@ -53,7 +54,7 @@ const ContentsFilter = ({
           ))}
         </CategoryList>
       </FilterContainer>
-      <div style={{ height: "12.6rem" }} />
+      <div style={{ height: "15.1rem" }} />
     </>
   );
 };
@@ -63,7 +64,7 @@ const FilterContainer = styled.div`
   position: fixed;
   z-index: 5;
 
-  top: 6rem;
+  top: 8.5rem;
   @media screen and (min-width: 480px) {
     width: 480px;
   }

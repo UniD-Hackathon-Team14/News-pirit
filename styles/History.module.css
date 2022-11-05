@@ -1,0 +1,151 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.title {
+  margin-top: 5.1rem;
+  margin-bottom: 1.1rem;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+.sub_title {
+  margin-top: 1.85rem;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+  margin-bottom: 8rem;
+}
+.divider {
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 0.5px;
+
+  background: #5a5a5a;
+  border: 0.5px solid #5a5a5a;
+}
+.img_container {
+  width: "100%";
+  text-align: center;
+}
+
+.img {
+  width: 110px;
+  height: 154px;
+}
+.text_container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.text {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 33px;
+  word-wrap: break-all;
+  white-space: pre-wrap;
+
+  color: #000000;
+}
+.color_text {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 33px;
+  word-wrap: break-all;
+  white-space: pre-wrap;
+
+  color: #193083;
+}
+.button_container {
+  width: 100%;
+  margin-top: 4.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.button {
+  width: 142px;
+  height: 55px;
+  left: 117px;
+  top: 616px;
+
+  background: #292929;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small_button {
+  width: 100px;
+  height: 55px;
+
+  background: #292929;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small_button_gray {
+  width: 100px;
+  height: 55px;
+  margin-right: 1rem;
+  background: #b2b2b2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button_text {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+
+  color: #ffffff;
+}
+
+.mike_1 {
+  position: absolute;
+  width: 7.4rem;
+  height: 6.9rem;
+  left: 18.56px;
+  bottom: 20px;
+
+  opacity: 0.7;
+}
+
+.mike_2 {
+  position: absolute;
+  width: 7rem;
+  height: 7rem;
+  right: 0;
+  bottom: 80px;
+  opacity: 0.7;
+}
