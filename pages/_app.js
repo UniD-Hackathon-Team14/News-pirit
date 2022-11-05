@@ -46,6 +46,7 @@ const ISPC = styled.div`
   min-height: 100vh;
   position: relative;
   background-color: #eaeaea;
+  z-index: -100;
 `;
 
 export default App;
