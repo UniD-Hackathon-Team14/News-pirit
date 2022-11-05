@@ -19,14 +19,26 @@ const signup = async (body) => {
   try {
     const { data } = await axios({
       baseURL: API_DOMAIN,
-      url: `/accounts/register/`,
+      url: `/register/`,
       method: "post",
       data: body,
     });
-    // console.log('[SUCCESS] SIGNUP', data);
     return data;
   } catch (e) {
-    // console.log('[FAIL] SIGNUP', e);
+    return e;
+  }
+};
+
+const imageAnswer = async (body) => {
+  try {
+    const { data } = await axios({
+      baseURL: API_DOMAIN,
+      url: `/answer/image/`,
+      method: "post",
+      data: body,
+    });
+    return data;
+  } catch (e) {
     return e;
   }
 };
@@ -35,7 +47,6 @@ const postAudio = async (body) => {
   const formData = new FormData();
   formData.append("qna_question", body.question);
   formData.append("audio_dirs", body.audio_dirs);
-  formData.append("user", body.userId);
   try {
     const { data } = await axios({
       baseURL: API_DOMAIN,
@@ -56,6 +67,7 @@ const postAudio = async (body) => {
 const postApi = {
   signup,
   login,
+  imageAnswer,
   postAudio,
 };
 export default postApi;

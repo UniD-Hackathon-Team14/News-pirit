@@ -3,8 +3,8 @@
 }
 
 .main {
+background-color: #ddd;
   min-height: 100vh;
-  padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -12,21 +12,48 @@
   align-items: center;
 }
 
+.title-wrapper {
+    padding: 30px;
+}
+
 .home-title {
     height: 100px;
-    background-color: blue;
+    font-size: 28px;
+}
+
+.home-subtitle {
+    font-size: 15px;
 }
 
 .home-image {
-    width: 200px;
-    height: 300px;
-    border: solid blue 5px;
+    width: 350px;
+    height: 420px;
+    border: solid black 5px;
 }
 
 .authentication {
+    margin-top: 40px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+.authentication > button {
+    width: 150px;
+    height: 45px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    border: none;
+}
+
+.login {
+    background-color: #585757;
+    opacity: 35%;
+}
+
+.signup{
+    background-color: #585757;
 }
 

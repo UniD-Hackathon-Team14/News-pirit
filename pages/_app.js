@@ -6,11 +6,14 @@ import "../styles/globals.css";
 // theme
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
-import axios from "axios";
-import getApi from "../src/api/get";
+import axios from 'axios';
+import getApi from '../src/api/get'
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.withCredentials = true
+
+getApi.getProfile()
 
 function App({ Component, pageProps }) {
   useEffect(async () => {
