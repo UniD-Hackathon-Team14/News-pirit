@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 /* PageItemDetail 동일한 컴포넌트 */
-const Items = ({
-  id,
+const Audio = ({
   datas,
   category,
   userID,
@@ -21,38 +20,26 @@ const Items = ({
     <>
       <ItemList>
         {datas?.length > 0 &&
-          datas.map((item, idx) => (
-            <>
+          datas.map((item) => (
+            <div>
+              <Text>{item.created_at}</Text>
+              <Text>
+                {" "}
+                {item.question}({category})
+              </Text>
               <GoodsCntnr
-                onMouseEnter={() => setShowID(() => [idx])}
+                onMouseEnter={() => setShowID(() => [item.id])}
                 onMouseLeave={() => setShowID(() => [])}
               >
-                <Image
-                  src={item.image}
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    return false;
-                  }}
-                  onDragStart={() => {
-                    return false;
-                  }}
-                />
-                <ItemHover isClick={showID?.length > 0 && showID.includes(idx)}>
-                  <ItemText>
-                    <Text>카테고리 : {category}</Text>
-                  </ItemText>
-                  <ItemText>
-                    <Text>질문{item.question}</Text>
-                  </ItemText>
-                </ItemHover>
+                <AudioItem controls src={item.audio} />
               </GoodsCntnr>
-            </>
+            </div>
           ))}
       </ItemList>
     </>
   );
 };
-export default Items;
+export default Audio;
 
 const ItemList = styled.div`
   width: 100%;
@@ -65,17 +52,6 @@ const ItemList = styled.div`
 `;
 
 const GoodsCntnr = styled.div`
-  width: 100%;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const Image = styled.div`
-  background: url(${(props) => props.src}) center center / cover;
-  background-color: ${({ theme }) => theme.colors.gray_7};
-
   @media screen and (min-width: 480px) {
     width: ${`calc(240px - 0.28rem);`};
     height: ${`calc(240px - 0.28rem);`};
@@ -83,6 +59,19 @@ const Image = styled.div`
   @media screen and (max-width: 480px) {
     width: ${`calc(50vw - 0.28rem);`};
     height: ${`calc(50vw - 0.28rem);`};
+  }
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const AudioItem = styled.audio`
+  @media screen and (min-width: 480px) {
+    width: ${`calc(240px - 0.28rem);`};
+  }
+  @media screen and (max-width: 480px) {
+    width: ${`calc(50vw - 0.28rem);`};
   }
 `;
 
@@ -112,6 +101,7 @@ const ItemHover = styled.div`
 const ItemText = styled.div`
   width: 80%;
   height: 1.5rem;
+  font-size: 1.2rem;
 
   display: flex;
   flex-direction: row;
@@ -122,8 +112,15 @@ const ItemText = styled.div`
   letter-spacing: -0.035rem;
   color: ${({ theme }) => theme.colors.white};
 `;
+
 const Text = styled.div`
-  width: 100%;
+  @media screen and (min-width: 480px) {
+    width: ${`calc(240px - 0.28rem);`};
+  }
+  @media screen and (max-width: 480px) {
+    width: ${`calc(50vw - 0.28rem);`};
+  }
+  font-size: 1.4rem;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

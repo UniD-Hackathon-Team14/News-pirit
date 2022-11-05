@@ -17,16 +17,17 @@ const getUserID = async (name) => {
 
 const getProfile = async () => {
   try {
-    const { data } = await axios({
+    const data = await axios({
       baseURL: API_DOMAIN,
       url: `/profile/`,
       method: "get",
       withCredentials: true,
     });
-    // console.log('[SUCCESS] GET PROFILE', data);
+    console.log(data);
+    console.log("[SUCCESS] GET PROFILE", data);
     return data;
   } catch (e) {
-    // console.log('[FAIL] GET PROFILE', e);
+    console.log("[FAIL] GET PROFILE", e);
     return e;
   }
 };
