@@ -17,7 +17,7 @@ const login = async (body) => {
 const signup = async (body) => {
   // console.log(body);
   try {
-    const { data } = await axios({
+    const data = await axios({
       baseURL: API_DOMAIN,
       url: `/register/`,
       method: "post",
