@@ -6,6 +6,10 @@ import "../styles/globals.css";
 // theme
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
+import axios from 'axios';
+
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 
 function App({ Component, pageProps }) {
   return (
@@ -31,7 +35,11 @@ const ISPC = styled.div`
   @media screen and (max-width: 480px) {
     width: 100%;
   }
+<<<<<<< HEAD
   min-height: 100vh;
+=======
+  min-hieght: 100vh;
+>>>>>>> 03757feb6b2f7f1d47376202cf4dd91367190dd7
 `;
 
 export default App;
