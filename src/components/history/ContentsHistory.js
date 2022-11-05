@@ -21,6 +21,7 @@ const ContentsHistory = ({
           <Audio datas={datas} category={filterData.category.value} />
         </>
       ) : (
+        datas.length > 0 &&
         datas.map((item, idx) => (
           <>
             <div

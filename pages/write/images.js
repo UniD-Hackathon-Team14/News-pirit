@@ -28,6 +28,7 @@ export default function Images() {
       setPathList(tmp);
     });
   }, [router.query.category]);
+
   useEffect(() => {
     if (data[step].answer_list.length === 0) return;
     let tmp = [];
@@ -83,6 +84,7 @@ export default function Images() {
               onClick={() => {
                 if (step + 1 === data.length) {
                   const userID = localStorage.getItem("userID");
+                  
                   postApi.imageAnswer({ answers: pathList, user: userID });
                   router.push("/write/complete");
                 } else {

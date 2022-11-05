@@ -17,9 +17,11 @@ export default function Login() {
       })
       .then((res) => {
         console.log(res);
-        localStorage.setItem("userID", res.user);
-        localStorage.setItem("nickname", res.nickname);
-        localStorage.setItem("isLogin", "true");
+        if (res !== "Invalid username or password") {
+          localStorage.setItem("userID", res.user);
+          localStorage.setItem("nickname", res.nickname);
+          localStorage.setItem("isLogin", "true");
+        }
         router.push("/");
       })
       .catch((e) => console.error(e));
