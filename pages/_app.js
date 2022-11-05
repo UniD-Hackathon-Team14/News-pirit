@@ -13,12 +13,12 @@ axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.withCredentials = true
 
-getApi.getProfile()
+// getApi.getProfile()
 
 function App({ Component, pageProps }) {
-  useEffect(async () => {
-    const res = await getApi.getProfile();
-  }, []);
+//   useEffect(async () => {
+//     const res = await getApi.getProfile();
+//   }, []);
 
   return (
     <ISPC>
@@ -46,7 +46,6 @@ const ISPC = styled.div`
   min-height: 100vh;
   position: relative;
   background-color: #eaeaea;
-  z-index: -100;
 `;
 
 export default App;
