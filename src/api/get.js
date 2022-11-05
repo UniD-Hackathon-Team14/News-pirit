@@ -1,5 +1,20 @@
 import axios from "axios";
 
+const test = async () => {
+    try {
+        const {data} = await axios({
+            baseURL: API_DOMAIN,
+            url: 'category/',
+            method: 'get',
+        });
+        console.log(data)
+        return data;
+    } catch (e) {
+        console.log(e)
+        return e;
+    }
+}
+
 const getUserID = async (name) => {
   try {
     const { data } = await axios({
@@ -14,6 +29,19 @@ const getUserID = async (name) => {
     return e;
   }
 };
+
+const checkDuplicateUsername = async (username) => {
+  try {
+    const { data } = await axios({
+      baseURL: API_DOMAIN,
+      url: `/check_username/?username=${username}`,
+      method: "get",
+    });
+    return data;
+  } catch (e) {
+    return e;
+  }
+}
 
 const getProfile = async () => {
   try {
@@ -62,7 +90,7 @@ const getImages = async (category) => {
   } catch (e) {
     return e;
   }
-};
+}
 
 const getHistory = async (filterData) => {
   try {
@@ -84,11 +112,13 @@ const getHistory = async (filterData) => {
 };
 
 const getApi = {
+  checkDuplicateUsername,
   getProfile,
   getUserID,
   getProfile,
   getAudioQuestion,
   getImages,
   getHistory,
+  test,
 };
 export default getApi;
