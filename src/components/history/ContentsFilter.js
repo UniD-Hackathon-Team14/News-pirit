@@ -11,7 +11,8 @@ const ContentsFilter = ({
   handleFetch,
 }) => {
   const router = useRouter();
-
+  console.log(filterData);
+  console.log(record_options);
   return (
     <>
       <FilterContainer>
@@ -19,9 +20,11 @@ const ContentsFilter = ({
           isMulti={false}
           options={options}
           isSearchable={false}
-          inputData={filterData.category}
-          setInputData={(e) => {
-            setFilterData({ ...filterData, category: e });
+          inputData={filterData.record_type}
+          setInputData={async (e) => {
+            const filter_data = { ...filterData, record_type: e };
+            await handleFetch(filter_data);
+            setFilterData(filter_data);
           }}
         />
         <CategoryList>
@@ -32,11 +35,12 @@ const ContentsFilter = ({
                   width: item.label.length * 11.5 + 40,
                   height: "3.8rem",
                 }}
-                isClicked={filterData.record_type === item.value}
-                onClick={() => {
-                  if (filterData.record_type !== item.value) {
-                    setFilterData({ ...filterData, record_type: item.value });
-                    handleFetch(filterData);
+                isClicked={filterData.category.value === item.value}
+                onClick={async () => {
+                  if (filterData.category.value !== item.value) {
+                    const filter_data = { ...filterData, category: item };
+                    await handleFetch(filter_data);
+                    setFilterData(filter_data);
                   }
                 }}
               >
@@ -53,7 +57,7 @@ const ContentsFilter = ({
           ))}
         </CategoryList>
       </FilterContainer>
-      <div style={{ height: "12.6rem" }} />
+      <div style={{ height: "15.1rem" }} />
     </>
   );
 };
@@ -63,7 +67,7 @@ const FilterContainer = styled.div`
   position: fixed;
   z-index: 5;
 
-  top: 6rem;
+  top: 8.5rem;
   @media screen and (min-width: 480px) {
     width: 480px;
   }

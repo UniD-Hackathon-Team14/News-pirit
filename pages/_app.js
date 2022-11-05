@@ -6,8 +6,13 @@ import "../styles/globals.css";
 // theme
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
+<<<<<<< HEAD
 import axios from 'axios';
 import getApi from '../src/api/get'
+=======
+import axios from "axios";
+import getApi from "../src/api/get";
+>>>>>>> 435eabf807e6ee048f11c1028f88da155760b496
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
@@ -16,6 +21,10 @@ axios.defaults.withCredentials = true
 getApi.getProfile()
 
 function App({ Component, pageProps }) {
+  useEffect(async () => {
+    const res = await getApi.getProfile();
+  }, []);
+
   return (
     <ISPC>
       <ThemeProvider theme={theme}>
@@ -41,6 +50,7 @@ const ISPC = styled.div`
   }
   min-height: 100vh;
   position: relative;
+  background-color: #eaeaea;
 `;
 
 export default App;
