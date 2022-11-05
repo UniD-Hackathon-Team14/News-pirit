@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { postApi, getApi } from '../src/api';
 import styles from '../styles/Signup.module.css'
+import {useRouter} from "next/router"
 
 export default function Signup() {
+    const router = useRouter();
     const [username, setUsername] = useState("");
     const [nickname, setNickname] = useState("");
     const [password, setPassword] = useState("");
@@ -21,12 +23,21 @@ export default function Signup() {
     }
     const handleSignup= (event) => {
         event.preventDefault();
+        console.log(isDuplicateUsername)
         if(password !== passwordCheck) {
             setIsDifferentPassword(true);
         }
-        else {
+        else if(isDuplicateUsername == 1){
             setIsDifferentPassword(false);
-            postApi.signup({username, password, nickname});
+            postApi.signup({username, password, nickname}).then((res) => {
+                console.log(res);
+                if(res.status < 400) {
+                    localStorage.setItem("userID", username);
+                    localStorage.setItem("nickname", nickname);
+                    localStorage.setItem("isLogin", "true");
+                    router.push('/');
+                }
+            });
         }
     }
     const handleChangeUsername = (event) => {
