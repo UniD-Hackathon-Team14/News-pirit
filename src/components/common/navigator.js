@@ -8,7 +8,7 @@ export default function Navigator() {
     <div className={styles.container}>
       <div
         className={styles.tab}
-        onClick={() => {router.push('/home')}}
+        onClick={() => {router.push('/')}}
       >
         <img src='/img/home.png'></img>
           홈
