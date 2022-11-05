@@ -1,8 +1,10 @@
 import styles from '../styles/Login.module.css'
 import {useState} from 'react'
 import { postApi} from '../src/api';
+import {useRouter} from 'next/router';
 
 export default function Login() {
+    const router = useRouter();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const handleLogin = async (event) => {
@@ -18,27 +20,36 @@ export default function Login() {
         setPassword(event.target.value);
     }
     return (
-        <div>
-            <div className={styles[`home-title`]}>
-                감정의 셀프<br/>
-                기자회견
+        <div className={styles.main}>
+            <div className = {styles[`title-wrapper`]}>
+                <div className={styles[`login-title`]}>
+                    감정의 셀프 기자회견
+                </div>
+                <div className={styles[`login-subtitle`]}>
+                    솔직한 나를 만나는 시간
+                </div>
             </div>
             <div>
-                <form>
+                <form className={styles[`login-form`]}>
                     <input
+                    placeholder='아이디'
                     type="text"
                     name="username"
                     value={username}
                     onChange={handleChangeUsername}
                     />
                     <input
+                    placeholder='비밀번호'
                     type="password"
                     name="password"
                     value={password}
                     onChange={handleChangePassword}
                     />
-                <button type="submit" onClick = {handleLogin}>비밀번호 변경</button>
                 </form>
+                <div className={styles[`authentication-buttons`]}>
+                    <button type="submit" className={styles[`login-button`]} onClick = {handleLogin}>로그인</button>
+                    <button type="submit" className={styles[`signup-button`]} onClick = {() => {router.push('/signup')}}>회원가입</button>
+                </div>
             </div>
         </div>
     )

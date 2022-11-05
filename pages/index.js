@@ -14,14 +14,20 @@ export default function Home() {
 
       <main className={styles.main}>
         <div>
-            <div className={styles[`home-title`]}>
-                감정의 셀프<br/>
-                기자회견
+            <div className={styles[`title-wrapper`]}>
+                <div className={styles[`home-title`]}>
+                    감정의<br/>
+                    셀프 기자회견
+                </div>
+                <div className={styles[`home-subtitle`]}>
+                    아아 이제 가면을 벗을 시간입니다.<br/>
+                    꾸밈없이 내 자신에게 솔직해지세요
+                </div>
             </div>
             <div className={styles[`home-image`]}>설명하는 그림</div>
             <div className={styles.authentication}>
-                <button onClick = {() => {router.push('/login')}}>로그인</button>
-                <button onClick = {() => {router.push('/signup')}}>회원가입</button>
+                <button className={styles.login} onClick = {() => {router.push('/login')}}>로그인</button>
+                <button className={styles.signup} onClick = {() => {router.push('/signup')}}>회원가입</button>
             </div>
         </div>
       </main>
