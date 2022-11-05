@@ -2,75 +2,11 @@ import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { Items } from "../common";
 
-const ContentsHistory = ({}) => {
-  const datas = [
-    {
-      date: "2019-02-01",
-      category: "직장",
-      image: [
-        {
-          id: 1,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-        {
-          id: 2,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-      ],
-    },
-    {
-      date: "2019-02-01",
-      category: "학업",
-
-      image: [
-        {
-          id: 3,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-        {
-          id: 4,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-      ],
-    },
-    {
-      date: "2019-02-01",
-      category: "학교",
-
-      image: [
-        {
-          id: 5,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-        {
-          id: 6,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-      ],
-    },
-    {
-      date: "2019-02-01",
-      category: "직장",
-      image: [
-        {
-          id: 7,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-        {
-          id: 8,
-          image_main:
-            "https://image.msscdn.net/images/goods_img/20220808/2703957/2703957_1_big.jpg?t=20221021141538",
-        },
-      ],
-    },
-  ];
+const ContentsHistory = ({ checkList, setCheckList, datas }) => {
+  
+  const makeNewsLetter = () => {
+    const filterData = datas.filter((el) => checkList.includes(el));
+  };
   return (
     <>
       {datas.map((item) => (
@@ -82,10 +18,28 @@ const ContentsHistory = ({}) => {
               justifyContent: "space-between",
             }}
           >
-            <Text>{item.date}</Text>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <input
+                type="checkBox"
+                checked={checkList.includes(item.id)}
+                onChange={
+                  checkList.includes(item.id)
+                    ? () =>
+                        setCheckList(checkList.filter((el) => el != item.id))
+                    : () => setCheckList(checkList.concat(item.id))
+                }
+                style={{ height: "2rem" }}
+              />
+              <Text>{item.date}</Text>
+            </div>
             <Text>{item.category}</Text>
           </div>
-
           <Items datas={item.image} category={item.category} />
         </>
       ))}
@@ -97,7 +51,6 @@ export default ContentsHistory;
 
 const Text = styled.div`
   display: block;
-  margin-bottom: 0.5rem;
   font-family: Roboto;
   font-size: ${(props) => (props.isSmall ? "1.2rem" : "1.4rem")};
   font-weight: 700;

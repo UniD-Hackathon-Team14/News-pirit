@@ -17,6 +17,8 @@
     "dotenv": "^16.0.0",
     "dotenv-webpack": "^7.1.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "moment": "^2.29.4",
     "moments": "^0.0.2",
     "next": "13.0.2",
