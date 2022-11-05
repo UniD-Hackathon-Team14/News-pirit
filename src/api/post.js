@@ -31,7 +31,21 @@ const signup = async (body) => {
   }
 };
 
+const imageAnswer = async (body) => {
+  try {
+    const { data } = await axios({
+      baseURL: API_DOMAIN,
+      url: `/answer/image/`,
+      method: "post",
+      data: body,
+    });
+     return data;
+  } catch (e) {
+    return e;
+  }
+}
+
 const postApi = {
-  signup, login
+  signup, login, imageAnswer
 };
 export default postApi;

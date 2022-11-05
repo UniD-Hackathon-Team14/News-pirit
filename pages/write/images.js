@@ -2,18 +2,50 @@ import React, { useEffect, useState, useCallback } from "react";
 import styles from '../../styles/Images.module.css';
 import { useRouter } from 'next/router';
 import getApi from '../../src/api/get';
+import postApi from "../../src/api/post";
 
 export default function Images() {
   const router = useRouter();
+  const [data, setData] = useState([{
+    "question": 0,
+    "contents": "",
+    "answer_list": []
+  }]);
   const [step, setStep] = useState(0);
-  const endPoint = 4;
+  const [imgList, setImgList] = useState([]);
+  const [select, setSelect] = useState([]);
+  const [pathList, setPathList] = useState([]);
 
   useEffect(() => {
-    if(router.query.category){
-        const data = getApi.getImages(router.query.category);
-        console.log(data);
-    }
+    if(!router.query.category) return;
+    getApi.getImages(router.query.category)
+    .then((res) => {
+      setData(res);
+      let tmp = [];
+      for(let i = 0; i < res.length; i++) tmp.push(-1);
+      setSelect(tmp);
+      setPathList(tmp);
+    });
   }, [router.query.category]);
+  useEffect(() => {
+    if(data[step].answer_list.length === 0) return;
+    let tmp = [];
+    for(let i = 0; i < data[step].answer_list.length; i++) {
+        tmp.push(
+          <img key={i} width={240} height={180} src={data[step].answer_list[i].url}
+            style={i === select[step] ? {'opacity': '0.6'} : {}}
+            onClick={() => {
+              let tmp = [...select];
+              tmp[step] = i;
+              setSelect(tmp);
+              tmp = [...pathList];
+              tmp[step] = data[step].answer_list[i].pk;
+              setPathList(tmp);
+            }}
+        />);
+    }
+    setImgList(tmp);
+  }, [step, data, select]);
 
   return (
     <div>
@@ -24,13 +56,10 @@ export default function Images() {
         </h1>
         <div className={styles.container}>
           <div className={styles.question}>
-            Q{step + 1}. 오늘 기분은 어떠신가요?
+            Q{step + 1}. {data[step].contents}
           </div>
           <div className={styles.images}>
-            <img height={180} src='/img/tree.jpeg'></img>
-            <img height={180} src='/img/tree.jpeg'></img>
-            <img height={180} src='/img/tree.jpeg'></img>
-            <img height={180} src='/img/tree.jpeg'></img>
+            {imgList}
           </div>
           <div className={styles.buttons}>
             {
@@ -41,10 +70,16 @@ export default function Images() {
               className={styles.next}
               style={step > 0 ? {'width' : '100px'} : {'width': '140px'}}
               onClick={() => {
-                if(step + 1 == endPoint) {
+                if(step + 1 === data.length) {
+                  postApi.imageAnswer({answers: pathList});
                   router.push('/write/complete');
+                }else{
+                  if(select[step] != -1) {
+                    setStep(step + 1);
+                  } else {
+                    alert('사진을 선택해주세요.');
+                  }
                 }
-              setStep(step + 1);
             }}>다음</div>
           </div>
         </div>

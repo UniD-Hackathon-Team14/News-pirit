@@ -1,5 +1,19 @@
 import axios from "axios";
 
+const getProfile = async () => {
+    try {
+        const { data } = await axios({
+            baseURL: API_DOMAIN,
+            url: '/profile/',
+            method: 'get',
+            withCredentials: true
+        })
+        return data
+    } catch (e) {
+        return e
+    }
+}
+
 const getUserID = async (name) => {
   try {
     const { data } = await axios({
@@ -33,6 +47,7 @@ const getImages = async (category) => {
 }
 
 const getApi = {
+  getProfile,
   getUserID,
   getImages,
 };
