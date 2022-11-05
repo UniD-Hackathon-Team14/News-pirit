@@ -31,6 +31,7 @@ const ISPC = styled.div`
   @media screen and (max-width: 480px) {
     width: 100%;
   }
+  min-hieght: 100vh;
 `;
 
 export default App;
