@@ -15,7 +15,23 @@ const getUserID = async (name) => {
   }
 };
 
+const getAudioQuestion = async () => {
+  try {
+    const { data } = await axios({
+      baseURL: API_DOMAIN,
+      url: `/question/?category=1&type=audio`,
+      method: "get",
+    });
+    // console.log('[SUCCESS] GET AUDIO QUESTION', data);
+    return data;
+  } catch (e) {
+    // console.log('[FAIL] GET AUDIO QUESTION', e);
+    return e;
+  }
+};
+
 const getApi = {
   getUserID,
+  getAudioQuestion,
 };
 export default getApi;
