@@ -6,13 +6,8 @@ import "../styles/globals.css";
 // theme
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
-<<<<<<< HEAD
 import axios from 'axios';
 import getApi from '../src/api/get'
-=======
-import axios from "axios";
-import getApi from "../src/api/get";
->>>>>>> 435eabf807e6ee048f11c1028f88da155760b496
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
