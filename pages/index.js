@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import { useRouter } from 'next/router';
 
 export default function Home() {
+    const router = useRouter();
   return (
     <div className={styles.container}>
       <Head>
@@ -18,8 +20,8 @@ export default function Home() {
             </div>
             <div className={styles[`home-image`]}>설명하는 그림</div>
             <div className={styles.authentication}>
-                <button>로그인</button>
-                <button>회원가입</button>
+                <button onClick = {() => {router.push('/login')}}>로그인</button>
+                <button onClick = {() => {router.push('/signup')}}>회원가입</button>
             </div>
         </div>
       </main>
