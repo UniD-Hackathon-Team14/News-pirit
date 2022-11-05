@@ -15,7 +15,25 @@ const getUserID = async (name) => {
   }
 };
 
+const getImages = async (category) => {
+  try {
+    const { data } = await axios({
+      baseURL: API_DOMAIN,
+      params: {
+        category: category,
+        type: 'image'
+      },
+      url: '/question/',
+      method: "get",
+    });
+    return data;
+  } catch (e) {
+    return e;
+  }
+}
+
 const getApi = {
   getUserID,
+  getImages,
 };
 export default getApi;

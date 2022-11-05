@@ -24,17 +24,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 25px;
 }
 
 .buttons div {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 240px;
+    width: 300px;
     height: 100px;
-    background-color: lightgray;
+    background-color: #6F6F6F;
     cursor: pointer;
     font-size: 24px;
+    font-weight: bold;
+    color: white;
     border-radius: 10px;
+}
+
+.buttons div img {
+    position: absolute;
+    left: 30px;
+}
+
+.completeman {
+    position: absolute;
+    bottom: 0;   
 }

@@ -1,11 +1,20 @@
 import React, { useEffect, useState, useCallback } from "react";
 import styles from '../../styles/Images.module.css';
 import { useRouter } from 'next/router';
+import getApi from '../../src/api/get';
 
 export default function Images() {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const endPoint = 4;
+
+  useEffect(() => {
+    if(router.query.category){
+        const data = getApi.getImages(router.query.category);
+        console.log(data);
+    }
+  }, [router.query.category]);
+
   return (
     <div>
       <div className={styles.wrapper}>
@@ -26,14 +35,16 @@ export default function Images() {
           <div className={styles.buttons}>
             {
               step > 0 &&
-              <div onClick={() => {setStep(step - 1); window.scrollTo(0,0);}}>이전</div>
+              <div className={styles.last} onClick={() => {setStep(step - 1)}}>이전</div>
             }
-            <div onClick={() => {
-              if(step + 1 == endPoint) {
-                router.push('/write/complete');
-              }
+            <div
+              className={styles.next}
+              style={step > 0 ? {'width' : '100px'} : {'width': '140px'}}
+              onClick={() => {
+                if(step + 1 == endPoint) {
+                  router.push('/write/complete');
+                }
               setStep(step + 1);
-              window.scrollTo(0,0);
             }}>다음</div>
           </div>
         </div>
