@@ -104,10 +104,10 @@ const PageHistory = ({}) => {
   };
 
   return (
-    <div style={{ height: "100vh" }}>
-      <Title stlye={{}}>00님의 취재파일</Title>
-
+    <>
       <Container style={{ padding: 0, marginTop: 0 }}>
+        <Title stlye={{}}>00님의 취재파일</Title>
+
         <ContentsFilter
           filterData={filterData}
           setFilterData={setFilterData}
@@ -143,7 +143,7 @@ const PageHistory = ({}) => {
         )}
       </Container>
       <Navigator />
-    </div>
+    </>
   );
 };
 

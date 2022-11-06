@@ -22,7 +22,7 @@ const Audio = ({
         {datas?.length > 0 &&
           datas.map((item) => (
             <Background>
-              <Text>{item.created_at.slice(0,10)}</Text>
+              <Text>{item.created_at.slice(0, 10)}</Text>
               <TextCenter>
                 {" "}
                 {item.question}({category})
@@ -53,12 +53,12 @@ const ItemList = styled.div`
 
 const GoodsCntnr = styled.div`
   @media screen and (min-width: 480px) {
-    width: ${`calc(240px - 0.28rem);`};
-    height: ${`calc(240px - 0.28rem);`};
+    width: ${`calc(240px - 3.28rem);`};
+    height: ${`calc(240px - 3.28rem);`};
   }
   @media screen and (max-width: 480px) {
-    width: ${`calc(50vw - 0.28rem);`};
-    height: ${`calc(50vw - 0.28rem);`};
+    width: ${`calc(50vw - 3.28rem);`};
+    height: ${`calc(50vw - 3.28rem);`};
   }
   margin-bottom: 2rem;
   display: flex;
@@ -68,14 +68,20 @@ const GoodsCntnr = styled.div`
 
 const AudioItem = styled.audio`
   @media screen and (min-width: 480px) {
-    width: ${`calc(240px - 0.28rem);`};
+    width: ${`calc(240px - 3.28rem);`};
   }
   @media screen and (max-width: 480px) {
-    width: ${`calc(50vw - 0.28rem);`};
+    width: ${`calc(50vw - 3.28rem);`};
   }
 `;
 
 const Background = styled.div`
+  @media screen and (min-width: 480px) {
+    width: ${`calc(240px - 3.28rem);`};
+  }
+  @media screen and (max-width: 480px) {
+    width: ${`calc(50vw - 3.28rem);`};
+  }
   background: url(/img/audio.png) center center / contain no-repeat;
   width: 139px;
 `;
@@ -120,10 +126,10 @@ const ItemText = styled.div`
 
 const Text = styled.div`
   @media screen and (min-width: 480px) {
-    width: ${`calc(240px - 0.28rem);`};
+    width: ${`calc(240px - 3.28rem);`};
   }
   @media screen and (max-width: 480px) {
-    width: ${`calc(50vw - 0.28rem);`};
+    width: ${`calc(50vw - 3.28rem);`};
   }
   font-size: 1.4rem;
   white-space: nowrap;
@@ -132,8 +138,7 @@ const Text = styled.div`
 `;
 
 const TextCenter = styled.div`
-
-  font-family: 'Noto Sans';
+  font-family: "Noto Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -141,4 +146,3 @@ const TextCenter = styled.div`
   align-items: center;
   text-align: center;
 `;
-
