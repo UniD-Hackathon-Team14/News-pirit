@@ -33,21 +33,27 @@ export default function Images() {
     let tmp = [];
     for (let i = 0; i < data[step].answer_list.length; i++) {
       tmp.push(
-        <img
-          key={i}
-          width={240}
-          height={180}
-          src={data[step].answer_list[i].url}
-          style={i === select[step] ? { opacity: "0.6" } : {}}
-          onClick={() => {
-            let tmp = [...select];
-            tmp[step] = i;
-            setSelect(tmp);
-            tmp = [...pathList];
-            tmp[step] = data[step].answer_list[i].pk;
-            setPathList(tmp);
-          }}
-        />
+        <div className={styles.blackcontainer}>
+          <div
+            className={styles.black}
+            style={i === select[step] ? { 'opacity': '0.5' } : { 'opacity': '0' }}
+            onClick={() => {
+                let tmp = [...select];
+                tmp[step] = i;
+                setSelect(tmp);
+                tmp = [...pathList];
+                tmp[step] = data[step].answer_list[i].pk;
+                setPathList(tmp);
+              }}
+          ></div>
+          <img
+            key={i}
+            width={240}
+            height={180}
+            src={data[step].answer_list[i].url}
+            style={{ 'position': 'absolute' }}
+          />
+        </div>
       );
     }
     setImgList(tmp);
