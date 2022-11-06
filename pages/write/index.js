@@ -5,11 +5,12 @@ import { useRouter } from "next/router";
 
 export default function Write() {
   const router = useRouter();
-  const [date, setDate] = useState("");
-  const [nickname, setNicName] = useState("");
+  const [nickname, setNickname] = useState('');
+  const [date, setDate] = useState('');
+
   useEffect(() => {
-    const nick_name = localStorage.getItem("nickname");
-    setNicName(nick_name);
+    const nickname = window.localStorage.getItem('nickname');
+    setNickname(nickname);
     setDate(new Date().toLocaleDateString());
   }, []);
 

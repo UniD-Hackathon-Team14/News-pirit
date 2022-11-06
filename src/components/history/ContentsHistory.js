@@ -49,10 +49,16 @@ const ContentsHistory = ({
                   }
                   style={{ height: "2rem" }}
                 />
-                <Text>{item.date}</Text>
-              </div>
+                <div style={{
+                  padding: "5px",
+                  margin: "5px",
+                }}>
+                  <Text>{item.date}</Text>
+                </div>
               <Text>{item.category}</Text>
-            </div>
+              
+             </div>
+             </div>
             <Items datas={item.image_list} category={item.category} />
           </>
         ))
@@ -66,7 +72,7 @@ export default ContentsHistory;
 const Text = styled.div`
   display: block;
   font-family: Roboto;
-  font-size: ${(props) => (props.isSmall ? "1.2rem" : "1.4rem")};
+  font-size: ${(props) => (props.isSmall ? "1.6rem" : "1.8rem")};
   font-weight: 700;
   letter-spacing: -0.035rem;
   color: ${(props) =>

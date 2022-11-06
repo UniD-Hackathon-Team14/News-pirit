@@ -111,8 +111,7 @@ const PageHistory = ({}) => {
   return (
     <>
       <Container style={{}}>
-        <Title stlye={{}}>{nickname}님의 취재파일</Title>
-
+        <Title style={{fontWeight: "bold",}}>&nbsp;&nbsp;<span>&#x1F3A4;</span>&nbsp;&nbsp;{nickname}님의 취재파일</Title>
         <ContentsFilter
           filterData={filterData}
           setFilterData={setFilterData}
@@ -122,24 +121,20 @@ const PageHistory = ({}) => {
         />
 
         {filterData.record_type.value == "image" && (
-          <div
-            style={{
-              width: "100%",
-              height: "3rem",
-              justifyContent: "flex-start",
-            }}
-          >
+          <div style={{ width: "100%", justifyContent: "flex-end" }}>
             <button
               style={{
-                border: 0,
-                backgroundColor: "#fefefe",
-                borderRadius: "12px",
-                fontSize: "18px",
-                padding: "3px 15px",
+                width: "95%",
+                alignItems: "center",
+                backgroundColor: "#ffffff",
+                margin: "5% 0 3% 2.5%",
+                padding: "13px 15px",
+                fontSize: '18px',
+                fontWeight: "bold",
               }}
               onClick={() => setIsModalOpen(true)}
             >
-              뉴스 레터만들기
+              뉴스레터 만들기
             </button>
           </div>
         )}
