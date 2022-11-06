@@ -30,3 +30,7 @@
     border-radius: 12px;
     background-color: #8A8A8A;
 }
+
+.content button:hover {
+    background-color: #000;
+}
