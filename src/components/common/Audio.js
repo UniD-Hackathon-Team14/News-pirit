@@ -3,15 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 /* PageItemDetail 동일한 컴포넌트 */
-const Audio = ({
-  datas,
-  category,
-  userID,
-  isLogin,
-  setIsModalOpen,
-  preference,
-  setPreference,
-}) => {
+const Audio = ({ datas, category }) => {
   const router = useRouter();
 
   const [showID, setShowID] = useState([]);
@@ -21,8 +13,10 @@ const Audio = ({
       <ItemList>
         {datas?.length > 0 &&
           datas.map((item) => (
-            <Background>
-              <Text>{item.created_at.slice(0,10)}</Text>
+            <Background style={{}}>
+              <TextCenter>
+                <Text>{item.created_at.slice(0, 10)}</Text>
+              </TextCenter>
               <TextCenter>
                 {" "}
                 {item.question}({category})
@@ -42,7 +36,9 @@ const Audio = ({
 export default Audio;
 
 const ItemList = styled.div`
-  width: 100%;
+  width: ${`calc(100% - 4rem);`};
+
+  padding: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -53,12 +49,12 @@ const ItemList = styled.div`
 
 const GoodsCntnr = styled.div`
   @media screen and (min-width: 480px) {
-    width: ${`calc(240px - 0.28rem);`};
-    height: ${`calc(240px - 0.28rem);`};
+    width: ${`calc(240px - 1.28rem);`};
+    height: ${`calc(240px - 1.28rem);`};
   }
   @media screen and (max-width: 480px) {
-    width: ${`calc(50vw - 0.28rem);`};
-    height: ${`calc(50vw - 0.28rem);`};
+    width: ${`calc(50vw - 1.28rem);`};
+    height: ${`calc(50vw - 1.28rem);`};
   }
   margin-bottom: 2rem;
   display: flex;
@@ -68,16 +64,25 @@ const GoodsCntnr = styled.div`
 
 const AudioItem = styled.audio`
   @media screen and (min-width: 480px) {
-    width: ${`calc(240px - 0.28rem);`};
+    width: ${`calc(240px - 1.28rem);`};
   }
   @media screen and (max-width: 480px) {
-    width: ${`calc(50vw - 0.28rem);`};
+    width: ${`calc(50vw - 1.28rem);`};
   }
 `;
 
 const Background = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: url(/img/audio.png) center center / contain no-repeat;
-  width: 139px;
+  @media screen and (min-width: 480px) {
+    width: ${`calc(240px - 1.28rem);`};
+  }
+  @media screen and (max-width: 480px) {
+    width: ${`calc(50vw - 1.28rem);`};
+  }
 `;
 
 const ItemHover = styled.div`
@@ -120,20 +125,20 @@ const ItemText = styled.div`
 
 const Text = styled.div`
   @media screen and (min-width: 480px) {
-    width: ${`calc(240px - 0.28rem);`};
+    width: ${`calc(240px - 1.28rem);`};
   }
   @media screen and (max-width: 480px) {
-    width: ${`calc(50vw - 0.28rem);`};
+    width: ${`calc(50vw - 1.28rem);`};
   }
   font-size: 1.4rem;
+  line-hieght: 2rem;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 `;
 
 const TextCenter = styled.div`
-
-  font-family: 'Noto Sans';
+  font-family: "Noto Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -141,4 +146,3 @@ const TextCenter = styled.div`
   align-items: center;
   text-align: center;
 `;
-

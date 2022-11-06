@@ -11,6 +11,7 @@ import { style } from "@mui/system";
 import getApi from "../../api/get";
 
 const PageHistory = ({}) => {
+  const [nickname, setNikName] = useState("");
   const [checkList, setCheckList] = useState([]);
   const [filterData, setFilterData] = useState({
     start_date: "",
@@ -22,7 +23,9 @@ const PageHistory = ({}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
+    const nick_nmae = localStorage.getItem("nickname");
     handleFetch(filterData);
+    setNikName(nick_nmae);
   }, []);
 
   const handleFetch = async (filter_data) => {
@@ -105,7 +108,9 @@ const PageHistory = ({}) => {
 
   return (
     <div style={{ height: "100vh" }}>
-      <Title stlye={{}}>00님의 취재파일</Title>
+      <Title>
+        <span style={{ padding: "2rem" }}>{nickname}의 취재파일</span>
+      </Title>
 
       <Container style={{ padding: 0, marginTop: 0 }}>
         <ContentsFilter
@@ -115,16 +120,19 @@ const PageHistory = ({}) => {
           record_options={record_options}
           handleFetch={handleFetch}
         />
+
         <div style={{ width: "100%", justifyContent: "flex-end" }}>
-          <button
-            style={{
-              backgroundColor: "#ffffff",
-              border: "0.1rem solid #191919",
-            }}
-            onClick={() => setIsModalOpen(true)}
-          >
-            뉴스 레터만들기
-          </button>
+          {filterData?.record_type?.value == "image" && (
+            <button
+              style={{
+                backgroundColor: "#ffffff",
+                border: "0.1rem solid #191919",
+              }}
+              onClick={() => setIsModalOpen(true)}
+            >
+              뉴스 레터만들기
+            </button>
+          )}
         </div>
 
         <ContentsHistory
@@ -151,13 +159,8 @@ export default PageHistory;
 
 const Title = styled.div`
   z-index: 3;
-  @media screen and (min-width: 480px) {
-    width: 480px;
-  }
-  @media screen and (max-width: 480px) {
-    width: 100%;
-    left: 0;
-  }
+  width: calc(100% - 4rem);
+
   position: fixed;
   height: 8.5rem;
   top: 0;
