@@ -20,7 +20,10 @@ export default function Records() {
     setIsLoading(true);
     router.replace("/write/record?page=1");
     const res = await getApi.getAudioQuestion();
-    setQuestion(res);
+    if (res) {
+      console.log(res);
+      setQuestion(res);
+    }
 
     setIsLoading(false);
   }, []);
