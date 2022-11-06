@@ -1,5 +1,7 @@
 # 뉴스:피릿, 감정의 셀프 기자회견
 
+:2nd_place_medal: **Uni-DTHON 해커톤 은상**
+
 ## 기획 배경
 
 디지털 기술의 발전은 개개인의 자아에 영향을 끼치기 시작했습니다.
@@ -11,12 +13,19 @@
 
 ## 기술 스택
 
+### FE
 |<img src="https://bit.ly/3Wy1rXQ" height=50px>| <img src="https://bit.ly/3NDqyoc" height=50px>| <img src="https://bit.ly/3hfLIwm" height=50px>|
 |  :--: |  :---:  |  :---: |
 | React | NEXT.JS | Vercel |
 
+### BE
+|<img src="https://bit.ly/3U9L81Z" height=50px>| <img src="https://bit.ly/3NMbKDN" height=50px>| <img src="https://bit.ly/3fGE11Z" height=50px>|
+|  :--: |  :---:  |  :---: |
+| Django | Amazon S3 | Heroku |
 
-## 설치 및 시작
+
+
+## 설치 및 시작 (FE)
 
 ### Git Clone
 ``` bash
@@ -24,18 +33,50 @@ git clone https://github.com/UniD-Hackathon-Team14/unid-14-front.git
 ```
 
 ### Install Packages
+
 ``` bash
 yarn install
 # or
 npm install
 ```
+
 ### Run Development Server
+
 ```bash
 yarn dev
 # or
 npm run dev
 ```
+
 open http://localhost:3000 with your brower to see the result.
+
+## 설치 밀 시작 (BE)
+
+Repository: <a href="https://github.com/UniD-Hackathon-Team14/unidthon-back" target="_blank">Link</a>
+
+### Git Clone
+
+``` bash
+git clone https://github.com/UniD-Hackathon-Team14/unidthon-back.git
+```
+
+### Install Packages
+
+``` bash
+conda env create -f conda_requirements.txt
+```
+
+### Run Development Server
+
+```bash
+python manage.py runserver
+```
+
+### API Document
+
+<a href="https://documenter.getpostman.com/view/11345023/2s8YYFqiR2" target="_blank">Link</a>
+
+
 
 ## 서비스 설명
 
