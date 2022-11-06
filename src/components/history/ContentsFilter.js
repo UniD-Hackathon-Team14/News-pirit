@@ -57,7 +57,6 @@ const ContentsFilter = ({
           ))}
         </CategoryList>
       </FilterContainer>
-      <div style={{ height: "15.1rem" }} />
     </>
   );
 };

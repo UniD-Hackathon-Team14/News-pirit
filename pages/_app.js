@@ -30,6 +30,7 @@ function App({ Component, pageProps }) {
 }
 
 const ISPC = styled.div`
+  position: relative;
   -ms-user-select: none;
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
@@ -44,7 +45,6 @@ const ISPC = styled.div`
     width: 100%;
   }
   min-height: calc(100vh - 9rem);
-  position: relative;
   background-color: #eaeaea;
 `;
 

@@ -11,6 +11,7 @@ import { style } from "@mui/system";
 import getApi from "../../api/get";
 
 const PageHistory = ({}) => {
+  const [nickname, setNicName] = useState("");
   const [checkList, setCheckList] = useState([]);
   const [filterData, setFilterData] = useState({
     start_date: "",
@@ -22,7 +23,9 @@ const PageHistory = ({}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
+    const nick_name = localStorage.getItem("nickname");
     handleFetch(filterData);
+    setNicName(nick_name);
   }, []);
 
   const handleFetch = async (filter_data) => {
@@ -105,8 +108,8 @@ const PageHistory = ({}) => {
 
   return (
     <>
-      <Container style={{ padding: 0, marginTop: 0 }}>
-        <Title stlye={{}}>00님의 취재파일</Title>
+      <Container style={{}}>
+        <Title stlye={{}}>{nickname}님의 취재파일</Title>
 
         <ContentsFilter
           filterData={filterData}
@@ -115,17 +118,20 @@ const PageHistory = ({}) => {
           record_options={record_options}
           handleFetch={handleFetch}
         />
-        <div style={{ width: "100%", justifyContent: "flex-end" }}>
-          <button
-            style={{
-              backgroundColor: "#ffffff",
-              border: "0.1rem solid #191919",
-            }}
-            onClick={() => setIsModalOpen(true)}
-          >
-            뉴스 레터만들기
-          </button>
-        </div>
+
+        {filterData.record_type.value == "image" && (
+          <div style={{ width: "100%", justifyContent: "flex-end" }}>
+            <button
+              style={{
+                backgroundColor: "#ffffff",
+                border: "0.1rem solid #191919",
+              }}
+              onClick={() => setIsModalOpen(true)}
+            >
+              뉴스 레터만들기
+            </button>
+          </div>
+        )}
 
         <ContentsHistory
           checkList={checkList}
@@ -142,7 +148,6 @@ const PageHistory = ({}) => {
           />
         )}
       </Container>
-      <Navigator />
     </>
   );
 };

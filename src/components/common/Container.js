@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
+  padding-top: 15rem;
+  height: calc(100vh - 15rem);
 
-  min-height: 100vh;
-  padding-bottom: 0;
+  overflow: scroll;
+  position: relative;
 
   display: flex;
   flex-direction: column;

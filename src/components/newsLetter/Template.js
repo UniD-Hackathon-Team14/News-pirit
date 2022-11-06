@@ -51,19 +51,32 @@ export const Template = ({ printData }) => {
         <h1>유니드신문</h1>
       </div>
       <div className={styles.headerInfo}>
-        <p>A1</p>
-        <p>2021년 11월 15일 생성</p>
+        <div>A1</div>
+
+        <div>2021년 11월 15일 생성</div>
       </div>
       {printData.length > 0 &&
         printData.map((item) => (
           <div className={styles.content}>
             <div className={styles.imageContent}>
-              <h2>
+              <h3 style={{ fontSize: "1.4rem" }}>
                 {item.date} / {item.category}
-              </h2>
-              <div className={styles.imgContentBody}>
+              </h3>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
                 {item.image_list.map((img) => (
-                  <div>
+                  <div
+                    style={{
+                      fontSize: "1.2rem",
+                      width: "90px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
                     <div> {img.question}</div>
                     <img src={img.image} />
                   </div>
@@ -77,7 +90,10 @@ export const Template = ({ printData }) => {
 };
 
 const Container = styled.div`
+  position: relative;
+
   width: 100%;
+  max-height: 100vh;
   overflow: scroll;
 
   border-radius: 0.5rem;

@@ -1,78 +1,88 @@
 .divToPrint {
-    top: 0;
-    background-image: url('/img/newsBackground.png');
-    background-size: 450px;
-    width: 450px;
-    height: 1000px;
+  top: 0;
+  background-image: url("/img/newsBackground.png");
+  background-size: 450px;
+  width: 450px;
+  height: 1000px;
 }
 .container {
-    margin: 20px;
-    margin-top: 0;
+  margin: 20px;
+  margin-top: 0;
 }
 
 .headerTitle {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 7px solid rgba(0, 0, 0, 0.4);
-    margin-bottom: 25px;
-    font-size: 13px;
-    color: #6A6A6A;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 7px solid rgba(0, 0, 0, 0.4);
+  margin-bottom: 25px;
+  font-size: 13px;
+  color: #6a6a6a;
 }
 .headerTitle h1 {
-    font-size: 30px;
-    color: #000;
+  font-size: 30px;
+  color: #000;
 }
 .headerTitle div button {
-    border: 0;
-    border-radius: 12px;
-    font-size: 18px;
-    padding: 3px 15px;
+  border: 0;
+  border-radius: 12px;
+  font-size: 18px;
+  padding: 3px 15px;
 }
 .headerTitle div button:hover {
-    background-color: #000;
-    color: #fff;
+  background-color: #000;
+  color: #fff;
 }
 .headerInfo {
-    text-align: end;
-    border-bottom: 1.5px solid rgb(0, 0, 0);
-    font-size: 15px;
+  text-align: end;
+  border-bottom: 1.5px solid rgb(0, 0, 0);
+  font-size: 15px;
 }
 .headerInfo p {
-    margin: 3px 0px;
+  margin: 3px 0px;
 }
 
 .content div h2 {
-    font-size: 26px;
-    margin-bottom: 3px;
+  font-size: 26px;
+  margin-bottom: 3px;
 }
 
 .content div {
-    text-align: center;
-    padding: 10px;
+  text-align: center;
+  padding: 2px;
 }
 
 .content div p {
-    font-size: 15px;
+  font-size: 15px;
 }
 
-.imageContent, .voiceContent {
-    border-bottom: 1.5px solid rgb(0, 0, 0);
+.imageContent,
+.voiceContent {
+  border-bottom: 1.5px solid rgb(0, 0, 0);
 }
+
+.imgContentBody div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  height: 100px;
+}
+
 .imgContentBody img {
-    width: 85px;
-    height: 85px;
-    margin: 5px;
+  width: 85px;
+  height: 85px;
+  margin: 5px;
 }
 
 .voiceContentBody button {
-    padding: 5px 15px;
-    border-radius: 10px;
-    border: 0;
-    background-color: #6A6A6A;
-    color: #fff;
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 0;
+  background-color: #6a6a6a;
+  color: #fff;
 }
 
 .voiceContentBody button:hover {
-    background-color: #000;
+  background-color: #000;
 }
