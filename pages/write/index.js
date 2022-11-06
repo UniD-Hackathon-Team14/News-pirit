@@ -5,9 +5,12 @@ import { useRouter } from 'next/router';
 
 export default function Write() {
   const router = useRouter();
+  const [nickname, setNickname] = useState('');
   const [date, setDate] = useState('');
 
   useEffect(() => {
+    const nickname = window.localStorage.getItem('nickname');
+    setNickname(nickname);
     setDate(new Date().toLocaleDateString());
   }, []);
 
@@ -15,7 +18,7 @@ export default function Write() {
     <div className={styles.wrapper}>
       <h1 className={styles.title}>
         <span>{date}</span>
-        <span>성현님 기자회견</span>
+        <span>{nickname}님 기자회견</span>
       </h1>
       <div className={styles.container}>
         <div
