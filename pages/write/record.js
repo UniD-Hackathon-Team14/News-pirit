@@ -17,6 +17,7 @@ export default function Records() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(async () => {
+    setIsLoading(true);
     router.replace("/write/record?page=1");
     const res = await getApi.getAudioQuestion();
     setQuestion(res);

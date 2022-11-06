@@ -30,7 +30,7 @@ export default function Signup() {
         console.log(res);
         if (res.status < 400) {
           console.log(res);
-          localStorage.setItem("userID", res.config.datauser);
+          localStorage.setItem("userID", res.data.user);
           localStorage.setItem("nickname", nickname);
           localStorage.setItem("isLogin", "true");
           router.push("/");
