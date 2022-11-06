@@ -3,7 +3,7 @@
 }
 
 .main {
-background-color: #ddd;
+  background-color: #eaeaea;
   min-height: 100vh;
   flex: 1;
   display: flex;
@@ -13,52 +13,51 @@ background-color: #ddd;
 }
 
 .title-wrapper {
-    padding: 30px;
+  padding: 30px;
 }
 
 .home-title {
-    height: 100px;
-    font-size: 28px;
-    font-weight: bold;
+  height: 100px;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .home-subtitle {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .home-image {
-    width: 350px;
-    height: 420px;
+  width: 350px;
+  height: 420px;
 }
 
 .home-image img {
-    padding-top: 80px;
-    width: 100%;
+  padding-top: 80px;
+  width: 100%;
 }
 
 .authentication {
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .authentication > button {
-    width: 150px;
-    height: 45px;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
-    border: none;
+  width: 150px;
+  height: 45px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  border: none;
 }
 
 .login {
-    background-color: #585757;
-    opacity: 35%;
+  background-color: #585757;
+  opacity: 35%;
 }
 
-.signup{
-    background-color: #585757;
+.signup {
+  background-color: #585757;
 }
-

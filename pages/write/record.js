@@ -73,7 +73,7 @@ export default function Records() {
   };
 
   useEffect(() => {
-    navigator.getUserMedia(
+    navigator?.getUserMedia(
       { audio: true },
       () => {
         console.log("Permission Granted");
@@ -84,6 +84,7 @@ export default function Records() {
         setIsBlocked(true);
       }
     );
+    return () => {};
   }, []);
 
   if (isLoading) return <div>Loading...</div>;

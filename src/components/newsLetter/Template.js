@@ -45,7 +45,7 @@ export const Template = ({ printData }) => {
 
   console.log(printData);
   return (
-    <Container id="divToPrint">
+    <Container id="divToPrint" src={"/img/newsBackground.png"}>
       <div className={styles.headerTitle}>
         <p>2021.11.5~2021.11.7</p>
         <h1>유니드신문</h1>
@@ -93,13 +93,12 @@ const Container = styled.div`
   position: relative;
 
   width: 100%;
-  max-height: 100vh;
+  height: 100vh;
+
   overflow: scroll;
 
   border-radius: 0.5rem;
-  background-color: ${({ theme }) => theme.colors.white};
-
-  background: url("/img/newsBackground.png");
+  background: url(${(props) => props.src}) center center / cover;
 
   display: flex;
   flex-direction: column;

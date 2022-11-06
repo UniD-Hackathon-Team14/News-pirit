@@ -1,37 +1,37 @@
-const Dotenv = require('dotenv-webpack');
-const TerserPlugin = require('terser-webpack-plugin');
+const Dotenv = require("dotenv-webpack");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   webpack(config, { dev, webpack }) {
     config.module.rules.push(
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ["@svgr/webpack"],
       },
       {
         test: /\.(svg|png|jpg)$/,
-        loader: 'url-loader',
+        loader: "url-loader",
         options: {
-          publicPath: './.next/icons/',
-          name: '[name].[ext]?[hash]',
+          publicPath: "./.next/icons/",
+          name: "[name].[ext]?[hash]",
           limit: 5000,
         },
-      },
+      }
     );
 
     config.plugins.push(
       new webpack.DefinePlugin({
         API_DOMAIN:
-          process.env.NODE_ENV === 'production'
+          process.env.NODE_ENV === "production"
             ? JSON.stringify(process.env.API_URL)
             : JSON.stringify(process.env.DEV_API_URL),
         DOMAIN:
-          process.env.NODE_ENV === 'production'
+          process.env.NODE_ENV === "production"
             ? JSON.stringify(process.env.DOMAIN)
             : JSON.stringify(process.env.DEV_DOMAIN),
       }),
-      new webpack.EnvironmentPlugin(['NODE_ENV']),
-      new Dotenv({ silent: true }),
+      new webpack.EnvironmentPlugin(["NODE_ENV"]),
+      new Dotenv({ silent: true })
     );
 
     return config;
@@ -39,7 +39,7 @@ module.exports = {
 
   optimization: {
     minimizer:
-      process.env.NODE_ENV === 'production'
+      process.env.NODE_ENV === "production"
         ? [
             new TerserPlugin({
               terserOptions: {
@@ -53,7 +53,10 @@ module.exports = {
   },
 
   images: {
-    domains: ['https://unithon-hack.herokuapp.com'],
+    domains: [
+      "https://unithon-hack.herokuapp.com",
+      "unidthon-back.s3.ap-northeast-2.amazonaws.com",
+    ],
   },
 
   eslint: {

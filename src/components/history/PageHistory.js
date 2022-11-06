@@ -16,8 +16,8 @@ const PageHistory = ({}) => {
   const [filterData, setFilterData] = useState({
     start_date: "",
     end_date: "",
-    record_type: { value: "audio", label: "음성" },
-    category: { value: "직장", label: "직장" },
+    record_type: { label: "이미지", value: "image" },
+    category: { label: "학업", value: "학업" },
   });
   const [datas, setDatas] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,13 +46,15 @@ const PageHistory = ({}) => {
   };
 
   const options = [
-    { label: "음성", value: "audio" },
     { label: "이미지", value: "image" },
+    { label: "음성", value: "audio" },
   ];
 
   const record_options = [
-    { label: "직장", value: "직장" },
     { label: "학업", value: "학업" },
+    { label: "직장", value: "직장" },
+    { label: "취미", value: "취미" },
+    { label: "부캐", value: "부캐" },
   ];
 
   console.log(filterData);
