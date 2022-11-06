@@ -21,19 +21,19 @@ const Audio = ({
       <ItemList>
         {datas?.length > 0 &&
           datas.map((item) => (
-            <div>
-              <Text>{item.created_at}</Text>
-              <Text>
+            <Background>
+              <Text>{item.created_at.slice(0, 10)}</Text>
+              <TextCenter>
                 {" "}
                 {item.question}({category})
-              </Text>
+              </TextCenter>
               <GoodsCntnr
                 onMouseEnter={() => setShowID(() => [item.id])}
                 onMouseLeave={() => setShowID(() => [])}
               >
                 <AudioItem controls src={item.audio} />
               </GoodsCntnr>
-            </div>
+            </Background>
           ))}
       </ItemList>
     </>
@@ -53,12 +53,12 @@ const ItemList = styled.div`
 
 const GoodsCntnr = styled.div`
   @media screen and (min-width: 480px) {
-    width: ${`calc(240px - 0.28rem);`};
-    height: ${`calc(240px - 0.28rem);`};
+    width: ${`calc(240px - 3.28rem);`};
+    height: ${`calc(240px - 3.28rem);`};
   }
   @media screen and (max-width: 480px) {
-    width: ${`calc(50vw - 0.28rem);`};
-    height: ${`calc(50vw - 0.28rem);`};
+    width: ${`calc(50vw - 3.28rem);`};
+    height: ${`calc(50vw - 3.28rem);`};
   }
   margin-bottom: 2rem;
   display: flex;
@@ -68,11 +68,22 @@ const GoodsCntnr = styled.div`
 
 const AudioItem = styled.audio`
   @media screen and (min-width: 480px) {
-    width: ${`calc(240px - 0.28rem);`};
+    width: ${`calc(240px - 3.28rem);`};
   }
   @media screen and (max-width: 480px) {
-    width: ${`calc(50vw - 0.28rem);`};
+    width: ${`calc(50vw - 3.28rem);`};
   }
+`;
+
+const Background = styled.div`
+  @media screen and (min-width: 480px) {
+    width: ${`calc(240px - 3.28rem);`};
+  }
+  @media screen and (max-width: 480px) {
+    width: ${`calc(50vw - 3.28rem);`};
+  }
+  background: url(/img/audio.png) center center / contain no-repeat;
+  width: 139px;
 `;
 
 const ItemHover = styled.div`
@@ -115,13 +126,23 @@ const ItemText = styled.div`
 
 const Text = styled.div`
   @media screen and (min-width: 480px) {
-    width: ${`calc(240px - 0.28rem);`};
+    width: ${`calc(240px - 3.28rem);`};
   }
   @media screen and (max-width: 480px) {
-    width: ${`calc(50vw - 0.28rem);`};
+    width: ${`calc(50vw - 3.28rem);`};
   }
   font-size: 1.4rem;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+`;
+
+const TextCenter = styled.div`
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  align-items: center;
+  text-align: center;
 `;

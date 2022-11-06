@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
-import styles from "../../../styles/Newsletter.module.css";
+import styles from ".././../../styles/Newsletter.module.css";
 import html2canvas from "html2canvas";
+
 import jsPDF from "jspdf";
 import styled from "styled-components";
 export const Template = ({ printData }) => {
@@ -44,55 +45,45 @@ export const Template = ({ printData }) => {
 
   console.log(printData);
   return (
-    <div style={{ overflow: "none" }}>
-      <Container id="divToPrint">
-        <div className={styles.headerTitle}>
-          <p>2021.11.5~2021.11.7</p>
-          <h1>유니드신문</h1>
-        </div>
-        <div className={styles.headerInfo}>
-          <p>A1</p>
-          <p>2021년 11월 15일 생성</p>
-        </div>
-        {printData.length > 0 &&
-          printData.map((item) => (
-            <div className={styles.content}>
-              <div className={styles.imageContent}>
-                <h2>
-                  {item.date} / {item.category}
-                </h2>
-                <div style={{ display: "flex", overflow: "scroll" }}>
-                  {item.image_list.map((img) => (
-                    <div>
-                      <div> {img.question}</div>
-                      <Image src={img.image} />
-                    </div>
-                  ))}
-                </div>
+    <Container id="divToPrint">
+      <div className={styles.headerTitle}>
+        <p>2021.11.5~2021.11.7</p>
+        <h1>유니드신문</h1>
+      </div>
+      <div className={styles.headerInfo}>
+        <p>A1</p>
+        <p>2021년 11월 15일 생성</p>
+      </div>
+      {printData.length > 0 &&
+        printData.map((item) => (
+          <div className={styles.content}>
+            <div className={styles.imageContent}>
+              <h2>
+                {item.date} / {item.category}
+              </h2>
+              <div className={styles.imgContentBody}>
+                {item.image_list.map((img) => (
+                  <div>
+                    <div> {img.question}</div>
+                    <img src={img.image} />
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-
-        <button onClick={printDocument}>Print</button>
-      </Container>
-    </div>
+          </div>
+        ))}
+    </Container>
   );
 };
 
 const Container = styled.div`
+  width: 100%;
   overflow: scroll;
 
-  @media screen and (min-width: 480px) {
-    width: 432px;
-  }
-  @media screen and (max-width: 480px) {
-    width: 90%;
-  }
-
-  height: 100%;
-  padding-bottom: 5.4rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.colors.white};
+
+  background: url("/img/newsBackground.png");
 
   display: flex;
   flex-direction: column;

@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { Container, Modal } from "../common";
 import { SearchBar, ContentsHistory, ContentsFilter } from ".";
 import { Template } from "../newsLetter/Template";
+import Navigator from "../common/navigator";
 
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -104,9 +105,9 @@ const PageHistory = ({}) => {
 
   return (
     <>
-      <Title stlye={{}}>00님의 취재파일</Title>
-
       <Container style={{ padding: 0, marginTop: 0 }}>
+        <Title stlye={{}}>00님의 취재파일</Title>
+
         <ContentsFilter
           filterData={filterData}
           setFilterData={setFilterData}
@@ -141,6 +142,7 @@ const PageHistory = ({}) => {
           />
         )}
       </Container>
+      <Navigator />
     </>
   );
 };

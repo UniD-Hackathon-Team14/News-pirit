@@ -10,7 +10,7 @@ const Modal = ({ setIsOpen, onClick, printData }) => {
       <ModalContainer>
         <Template printData={printData} />
       </ModalContainer>
-      <BottomBtn onClick={onClick}>추출</BottomBtn>
+      <BottomBtn onClick={() => setIsOpen(false)}>확인</BottomBtn>
     </>
   );
 };
@@ -50,7 +50,6 @@ const ModalContainer = styled.div`
   }
 
   height: 80%;
-  padding-bottom: 5.4rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.colors.white};
 
