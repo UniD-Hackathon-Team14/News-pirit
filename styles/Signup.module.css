@@ -42,20 +42,23 @@
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     padding: 15px;
+    font-size: 16px;
 }
 
 .check-duplicate {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
 }
 
 .check-duplicate button {
-    height: 20px;
-    width: 120px;
-    border-radius: 8px;
+    height: 30px;
+    font-size: 15px;
+    width: 140px;
+    margin-left: 3px;
+    border-radius: 13px;
     background-color: #585757;
     border: none;
     color: white;
