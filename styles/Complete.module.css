@@ -1,54 +1,56 @@
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  padding-bottom: 0;
+  gap: 30px;
+  height: 100vh;
 }
 
 .subtitle {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 400;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    font-size: 28px;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-size: 28px;
+  gap: 5px;
 }
 
 .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }
 
 .buttons div {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 100px;
-    background-color: #6F6F6F;
-    cursor: pointer;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+  background-color: #6f6f6f;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
 }
 
 .buttons div img {
-    position: absolute;
-    left: 30px;
+  position: absolute;
+  left: 30px;
 }
 
 .completeman {
-    position: absolute;
-    bottom: 0;   
+  position: absolute;
+  bottom: 0;
 }

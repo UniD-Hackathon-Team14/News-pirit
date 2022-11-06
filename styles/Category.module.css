@@ -5,7 +5,8 @@
   padding: 60px;
   padding-bottom: 0;
   gap: 10px;
-  min-height: 100vh;
+  height: calc(100vh - 6rem);
+  overflow: scroll;
 }
 
 .title {

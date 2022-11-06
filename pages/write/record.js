@@ -49,7 +49,6 @@ export default function Records() {
           setPageNum(1);
           setBlob(blob);
 
-          const blobURL = URL.createObjectURL(blob);
           setIsRecording(false);
         })
         .catch((e) => {
