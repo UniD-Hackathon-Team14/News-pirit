@@ -72,13 +72,20 @@ export const Template = ({ printData }) => {
                   <div
                     style={{
                       fontSize: "1.2rem",
-                      width: "90px",
+                      width: "12rem",
                       display: "flex",
                       flexDirection: "column",
+                      fontSize: "1.4rem",
+                      overflow: "hideen",
+                      whiteSpace: "no-wrap",
+                      textOverflow: "ellipsis",
                     }}
                   >
                     <div> {img.question}</div>
-                    <img src={img.image} />
+                    <img
+                      style={{ width: "12rem", height: "12rem" }}
+                      src={img.image}
+                    />
                   </div>
                 ))}
               </div>

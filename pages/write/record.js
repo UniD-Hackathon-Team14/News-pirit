@@ -24,12 +24,13 @@ export default function Records() {
 
     setIsLoading(false);
   }, []);
+
   const start = () => {
-    if (!isRecording) {
+    if (!isRecording && MicRecorder) {
       if (isBlocked) {
         alert("Permission Denied");
       } else {
-        Mp3Recorder.start()
+        Mp3Recorder?.start()
           .then(() => {
             setIsRecording(true);
           })
@@ -39,11 +40,9 @@ export default function Records() {
   };
   const answer = [];
 
-  console.log(Mp3Recorder);
-
   const stop = () => {
-    if (isRecording) {
-      Mp3Recorder.stop()
+    if (isRecording && Mp3Recorder) {
+      Mp3Recorder?.stop()
         .getMp3()
         .then(async ([buffer, blob]) => {
           console.log(blob);
@@ -74,17 +73,19 @@ export default function Records() {
   };
 
   useEffect(() => {
-    navigator?.getUserMedia(
-      { audio: true },
-      () => {
-        console.log("Permission Granted");
-        setIsBlocked(false);
-      },
-      () => {
-        console.log("Permission Denied");
-        setIsBlocked(true);
-      }
-    );
+    if (navigator) {
+      navigator?.getUserMedia(
+        { audio: true },
+        () => {
+          console.log("Permission Granted");
+          setIsBlocked(false);
+        },
+        () => {
+          console.log("Permission Denied");
+          setIsBlocked(true);
+        }
+      );
+    }
     return () => {};
   }, []);
 
