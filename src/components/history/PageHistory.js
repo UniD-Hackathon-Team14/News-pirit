@@ -120,11 +120,20 @@ const PageHistory = ({}) => {
         />
 
         {filterData.record_type.value == "image" && (
-          <div style={{ width: "100%", justifyContent: "flex-end" }}>
+          <div
+            style={{
+              width: "100%",
+              height: "3rem",
+              justifyContent: "flex-start",
+            }}
+          >
             <button
               style={{
-                backgroundColor: "#ffffff",
-                border: "0.1rem solid #191919",
+                border: 0,
+                backgroundColor: "#fefefe",
+                borderRadius: "12px",
+                fontSize: "18px",
+                padding: "3px 15px",
               }}
               onClick={() => setIsModalOpen(true)}
             >
