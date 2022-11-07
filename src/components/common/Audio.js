@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import NoHistory from "../../../pages/noHistory";
 
 /* PageItemDetail 동일한 컴포넌트 */
 const Audio = ({
@@ -18,24 +19,27 @@ const Audio = ({
 
   return (
     <>
-      <ItemList>
-        {datas?.length > 0 &&
-          datas.map((item) => (
-            <Background>
-              <Text>{item.created_at.slice(0, 10)}</Text>
-              <TextCenter>
-                {" "}
-                {item.question}({category})
-              </TextCenter>
-              <GoodsCntnr
-                onMouseEnter={() => setShowID(() => [item.id])}
-                onMouseLeave={() => setShowID(() => [])}
-              >
-                <AudioItem controls src={item.audio} />
-              </GoodsCntnr>
-            </Background>
-          ))}
-      </ItemList>
+      {datas?.length == 0 || datas == undefined ? (
+        <NoHistory />
+      ) : (
+        <ItemList>
+          datas?.length > 0 && datas.map((item) => (
+          <Background>
+            <Text>{item.created_at.slice(0, 10)}</Text>
+            <TextCenter>
+              {" "}
+              {item.question}({category})
+            </TextCenter>
+            <GoodsCntnr
+              onMouseEnter={() => setShowID(() => [item.id])}
+              onMouseLeave={() => setShowID(() => [])}
+            >
+              <AudioItem controls src={item.audio} />
+            </GoodsCntnr>
+          </Background>
+          )) )}
+        </ItemList>
+      )}
     </>
   );
 };

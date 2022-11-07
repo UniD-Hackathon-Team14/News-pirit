@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
+import NoHistory from "../../../pages/noHistory";
 import { Items, Audio } from "../common";
 
 const ContentsHistory = ({
@@ -9,17 +10,14 @@ const ContentsHistory = ({
   type,
   filterData,
 }) => {
-  const makeNewsLetter = () => {
-    const filterData = datas.filter((el) => checkList.includes(el));
-  };
-  console.log(type);
-  console.log(datas);
   return (
     <>
       {type == "audio" ? (
         <>
           <Audio datas={datas} category={filterData.category.value} />
         </>
+      ) : datas.length == 0 || datas == undefined ? (
+        <NoHistory />
       ) : (
         datas.length > 0 &&
         datas.map((item, idx) => (
@@ -49,16 +47,17 @@ const ContentsHistory = ({
                   }
                   style={{ height: "2rem" }}
                 />
-                <div style={{
-                  padding: "5px",
-                  margin: "5px",
-                }}>
+                <div
+                  style={{
+                    padding: "5px",
+                    margin: "5px",
+                  }}
+                >
                   <Text>{item.date}</Text>
                 </div>
-              <Text>{item.category}</Text>
-              
-             </div>
-             </div>
+                <Text>{item.category}</Text>
+              </div>
+            </div>
             <Items datas={item.image_list} category={item.category} />
           </>
         ))

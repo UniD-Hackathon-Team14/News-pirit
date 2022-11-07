@@ -34,7 +34,6 @@ const PageHistory = ({}) => {
       type: filter_data.record_type.value,
     };
     const userId = localStorage.getItem("userID");
-    console.log(userId);
     const res = await getApi.getHistory(
       {
         type: filter_data.record_type.value,
@@ -42,7 +41,9 @@ const PageHistory = ({}) => {
       },
       userId
     );
-    setDatas(filter_data.record_type.value == "audio" ? res.audio_list : res);
+    if (typeof res == Object) {
+      setDatas(filter_data.record_type.value == "audio" ? res.audio_list : res);
+    }
   };
 
   const options = [
@@ -57,18 +58,11 @@ const PageHistory = ({}) => {
     { label: "부캐", value: "부캐" },
   ];
 
-  console.log(filterData);
-  const printData = async () => {
-    const convert_data = await datas.filter((el) => checkList.includes(el.id));
-    return convert_data;
-  };
-
   const printDocument = async () => {
     //1.html을 들고와서 canvas화
     var elem = document.getElementById("divToPrint");
     if (elem) {
       var rect = elem.getBoundingClientRect();
-      console.log("height: " + rect.height);
 
       const canvas = await html2canvas(document.getElementById("divToPrint"));
       //2.이미지화
@@ -84,7 +78,6 @@ const PageHistory = ({}) => {
       //비율에 따른 이미지 높이
       const customHeight = rect.height * widthRatio;
       //pdf에 1장에 대한 이미지 추가
-      console.log(imageFile);
       doc.addImage(imageFile, "png", 0, 0, pageWidth, customHeight);
       //doc.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
       //감소하면서 남은 길이 변수
@@ -111,7 +104,9 @@ const PageHistory = ({}) => {
   return (
     <>
       <Container style={{}}>
-        <Title style={{fontWeight: "bold",}}>&nbsp;&nbsp;<span>&#x1F3A4;</span>&nbsp;&nbsp;{nickname}님의 취재파일</Title>
+        <Title style={{ fontWeight: "bold" }}>
+          &nbsp;&nbsp;<span>&#x1F3A4;</span>&nbsp;&nbsp;{nickname}님의 취재파일
+        </Title>
         <ContentsFilter
           filterData={filterData}
           setFilterData={setFilterData}
@@ -120,7 +115,7 @@ const PageHistory = ({}) => {
           handleFetch={handleFetch}
         />
 
-        {filterData.record_type.value == "image" && (
+        {datas.length > 0 && filterData.record_type.value == "image" && (
           <div style={{ width: "100%", justifyContent: "flex-end" }}>
             <button
               style={{
@@ -129,7 +124,7 @@ const PageHistory = ({}) => {
                 backgroundColor: "#ffffff",
                 margin: "5% 0 3% 2.5%",
                 padding: "13px 15px",
-                fontSize: '18px',
+                fontSize: "18px",
                 fontWeight: "bold",
               }}
               onClick={() => setIsModalOpen(true)}
