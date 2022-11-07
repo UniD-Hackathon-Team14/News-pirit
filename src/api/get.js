@@ -1,19 +1,17 @@
 import axios from "axios";
 
 const test = async () => {
-    try {
-        const {data} = await axios({
-            baseURL: API_DOMAIN,
-            url: 'category/',
-            method: 'get',
-        });
-        console.log(data)
-        return data;
-    } catch (e) {
-        console.log(e)
-        return e;
-    }
-}
+  try {
+    const { data } = await axios({
+      baseURL: API_DOMAIN,
+      url: "category/",
+      method: "get",
+    });
+    return data;
+  } catch (e) {
+    return e;
+  }
+};
 
 const getUserID = async (name) => {
   try {
@@ -41,7 +39,7 @@ const checkDuplicateUsername = async (username) => {
   } catch (e) {
     return e;
   }
-}
+};
 
 const getProfile = async () => {
   try {
@@ -51,11 +49,10 @@ const getProfile = async () => {
       method: "get",
       withCredentials: true,
     });
-    console.log(data);
-    console.log("[SUCCESS] GET PROFILE", data);
+    // console.log("[SUCCESS] GET PROFILE", data);
     return data;
   } catch (e) {
-    console.log("[FAIL] GET PROFILE", e);
+    // console.log("[FAIL] GET PROFILE", e);
     return e;
   }
 };
@@ -90,11 +87,10 @@ const getImages = async (category) => {
   } catch (e) {
     return e;
   }
-}
+};
 
 const getHistory = async (filterData, userId) => {
   try {
-    console.log(API_DOMAIN);
     const { data } = await axios({
       baseURL: API_DOMAIN,
       params: {

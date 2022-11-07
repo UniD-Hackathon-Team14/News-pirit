@@ -11,8 +11,6 @@ const ContentsFilter = ({
   handleFetch,
 }) => {
   const router = useRouter();
-  console.log(filterData);
-  console.log(record_options);
   return (
     <>
       <FilterContainer>

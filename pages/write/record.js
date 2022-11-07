@@ -26,7 +26,6 @@ export default function Records() {
       router.replace("/write/record?page=1");
       const res = await getApi.getAudioQuestion();
       if (res) {
-        console.log(res);
         setQuestion(res);
       }
     }
@@ -53,15 +52,12 @@ export default function Records() {
       Mp3Recorder?.stop()
         .getMp3()
         .then(async ([buffer, blob]) => {
-          console.log(blob);
           setPageNum(1);
           setBlob(blob);
 
           setIsRecording(false);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch((e) => {});
     } else {
       alert("음성 파일을 녹음해주세요");
     }
@@ -74,7 +70,6 @@ export default function Records() {
       audio_dirs: Blob,
       userId: userId,
     });
-    console.log(res);
     if (res) {
       router.push("/write/complete");
     }

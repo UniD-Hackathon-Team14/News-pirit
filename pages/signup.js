@@ -14,22 +14,18 @@ export default function Signup() {
   const checkDuplicateUsername = (event) => {
     event.preventDefault();
     getApi.checkDuplicateUsername(username).then((res) => {
-      console.log(res);
       if (res == "Username valid") setIsDuplicateUsername(1);
       else setIsDuplicateUsername(2);
     });
   };
   const handleSignup = (event) => {
     event.preventDefault();
-    console.log(isDuplicateUsername);
     if (password !== passwordCheck) {
       setIsDifferentPassword(true);
     } else if (isDuplicateUsername == 1) {
       setIsDifferentPassword(false);
       postApi.signup({ username, password, nickname }).then((res) => {
-        console.log(res);
         if (res.status < 400) {
-          console.log(res);
           localStorage.setItem("userID", res.data.user);
           localStorage.setItem("nickname", nickname);
           localStorage.setItem("isLogin", "true");

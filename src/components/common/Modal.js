@@ -3,7 +3,6 @@ import React from "react";
 import { Template } from "../newsLetter/Template";
 
 const Modal = ({ setIsOpen, onClick, printData }) => {
-  console.log(printData);
   return (
     <>
       <Background onClick={() => setIsOpen(false)} />

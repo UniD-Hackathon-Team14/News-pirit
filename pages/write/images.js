@@ -24,7 +24,6 @@ export default function Images() {
   useEffect(() => {
     if (!router.query.category) return;
     getApi.getImages(router.query.category).then((res) => {
-      console.log(res);
       if (res == "All question answered") {
         alert("더 이상 풀 수 있는 문제가 없슨니다.");
         router.push("/");

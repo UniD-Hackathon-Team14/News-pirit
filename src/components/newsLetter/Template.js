@@ -43,7 +43,6 @@ export const Template = ({ printData }) => {
     doc.save("filename" + new Date().getTime() + ".pdf");
   };
 
-  console.log(printData);
   return (
     <Container id="divToPrint" src={"/img/newsBackground.png"}>
       <div className={styles.headerTitle}>

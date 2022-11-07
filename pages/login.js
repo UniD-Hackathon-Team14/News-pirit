@@ -16,7 +16,6 @@ export default function Login() {
         password,
       })
       .then((res) => {
-        console.log(res);
         if (res !== "Invalid username or password") {
           localStorage.setItem("userID", res.user);
           localStorage.setItem("nickname", res.nickname);

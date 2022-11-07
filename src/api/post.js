@@ -57,7 +57,6 @@ const postAudio = async (body) => {
       data: formData,
       withCredentials: true,
     });
-    console.log(res);
     // console.log('[SUCCESS] POST AUDIO', data);
     return data;
   } catch (e) {
