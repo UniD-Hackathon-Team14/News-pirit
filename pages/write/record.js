@@ -16,17 +16,22 @@ export default function Records() {
   const [question, setQuestion] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(async () => {
-    setIsLoading(true);
-    router.replace("/write/record?page=1");
-    const res = await getApi.getAudioQuestion();
-    if (res) {
-      console.log(res);
-      setQuestion(res);
-    }
-
-    setIsLoading(false);
+  useEffect(() => {
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    if (question?.length == 0) {
+      router.replace("/write/record?page=1");
+      const res = await getApi.getAudioQuestion();
+      if (res) {
+        console.log(res);
+        setQuestion(res);
+      }
+    }
+    setIsLoading(false);
+  };
 
   const start = () => {
     if (!isRecording && MicRecorder) {
